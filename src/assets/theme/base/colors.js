@@ -108,8 +108,8 @@ export default {
     },
 
     info: {
-      main: "#49a3f1",
-      state: "#1A73E8",
+      main: "#107163",
+      state: "#107163",
     },
 
     success: {
@@ -133,7 +133,7 @@ export default {
     },
 
     dark: {
-      main: "#42424a",
+      main: "#107163",
       state: "#191919",
     },
   },
