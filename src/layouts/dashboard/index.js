@@ -33,7 +33,6 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
-import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
@@ -49,11 +48,11 @@ function Dashboard() {
                 color="dark"
                 icon="weekend"
                 title="Bookings"
-                count={281}
+                count=""
                 percentage={{
-                  color: "success",
-                  amount: "+55%",
-                  label: "than lask week",
+                  color: "",
+                  amount: "",
+                  label: "",
                 }}
               />
             </MDBox>
@@ -63,11 +62,11 @@ function Dashboard() {
               <ComplexStatisticsCard
                 icon="leaderboard"
                 title="Today's Users"
-                count="2,300"
+                count=""
                 percentage={{
-                  color: "success",
-                  amount: "+3%",
-                  label: "than last month",
+                  color: "",
+                  amount: "",
+                  label: "",
                 }}
               />
             </MDBox>
@@ -79,11 +78,11 @@ function Dashboard() {
                 color="success"
                 icon="store"
                 title="Revenue"
-                count="34k"
+                count=""
                 percentage={{
-                  color: "success",
-                  amount: "+1%",
-                  label: "than yesterday",
+                  color: "",
+                  amount: "",
+                  label: "",
                 }}
               />
             </MDBox>
@@ -94,11 +93,11 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Followers"
-                count="+91"
+                count=""
                 percentage={{
-                  color: "success",
+                  color: "",
                   amount: "",
-                  label: "Just updated",
+                  label: "",
                 }}
               />
             </MDBox>
@@ -147,11 +146,8 @@ function Dashboard() {
         </MDBox>
         <MDBox>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={8}>
+            <Grid item xs={12} md={6} lg={50}>
               <Projects />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <OrdersOverview />
             </Grid>
           </Grid>
         </MDBox>

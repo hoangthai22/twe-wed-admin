@@ -40,6 +40,9 @@ import breakpoints from "assets/theme/base/breakpoints";
 // Material Dashboard 2 PRO React context
 import { useMaterialUIController } from "context";
 
+// Images
+import tweLogo from "assets/images/logos/twe.png";
+
 function DefaultNavbar({ transparent, light, action }) {
   const [controller] = useMaterialUIController();
   const { darkMode } = controller;
@@ -109,8 +112,9 @@ function DefaultNavbar({ transparent, light, action }) {
           lineHeight={1}
           pl={{ xs: 0, lg: 1 }}
         >
+          <MDBox component="img" src={tweLogo} width="8%" mr={1} />
           <MDTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
-            Material Dashboard 2
+            The Weekend Expertise
           </MDTypography>
         </MDBox>
         <MDBox color="inherit" display={{ xs: "none", lg: "flex" }} m={0} p={0}>
