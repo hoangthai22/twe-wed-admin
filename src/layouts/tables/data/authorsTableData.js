@@ -54,9 +54,7 @@ export default function data() {
   const [mentor, setMentor] = useState([]);
   useEffect(() => {
     axios
-      .get(
-        "https://theweekendexpertisewebapi.azurewebsites.net/api/v1/mentors?pageIndex=1&pageSize=6"
-      )
+      .get("https://theweekendexpertise.azurewebsites.net/api/v1/mentors?pageIndex=1&pageSize=6")
       .then((res) => {
         const mentors = res.data;
         // eslint-disable-next-line array-callback-return
