@@ -54,7 +54,7 @@ export default function data() {
   const [mentor, setMentor] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/api/v1/mentors?pageIndex=1&pageSize=6")
+      .get("https://theweekendexpertise.azurewebsites.net/api/v1/mentors")
       .then((res) => {
         const mentors = res.data;
         // eslint-disable-next-line array-callback-return
@@ -116,10 +116,9 @@ export default function data() {
   return {
     columns: [
       { Header: "Mentor", accessor: "author", width: "35%", align: "left" },
-      { Header: "Chuyên ngành", accessor: "function", align: "left" },
-      { Header: "Ngày sinh", accessor: "birthday", align: "center" },
-      { Header: "Địa chỉ", accessor: "address", align: "center" },
-      { Header: "Giới tính", accessor: "sex", align: "center" },
+      { Header: "Group", accessor: "function", align: "left" },
+      { Header: "Ngày giờ", accessor: "birthday", align: "center" },
+      { Header: "Số lượng", accessor: "address", align: "center" },
       { Header: "Điện thoại", accessor: "phone", align: "center" },
       { Header: "Trạng thái", accessor: "status", align: "center" },
       { Header: "Thao tác", accessor: "action", align: "center" },
