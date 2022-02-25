@@ -115,7 +115,7 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Giảng viên", accessor: "author", width: "35%", align: "left" },
+      { Header: "Mentor", accessor: "author", width: "35%", align: "left" },
       { Header: "Chuyên ngành", accessor: "function", align: "left" },
       { Header: "Ngày sinh", accessor: "birthday", align: "center" },
       { Header: "Địa chỉ", accessor: "address", align: "center" },

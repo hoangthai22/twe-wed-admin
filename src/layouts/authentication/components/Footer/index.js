@@ -57,9 +57,9 @@ function Footer({ light }) {
               </Icon>
             </MDBox>
             by
-            <Link href="https://www.creative-tim.com/" target="_blank">
+            <Link href="https://github.com/hoangthai22/twe-wed-admin/tree/MinhNH45" target="_blank">
               <MDTypography variant="button" fontWeight="medium" color={light ? "white" : "dark"}>
-                &nbsp;Creative Tim&nbsp;
+                &nbsp;The Weekend Expertise&nbsp;
               </MDTypography>
             </Link>
             for a better web.
@@ -81,8 +81,8 @@ function Footer({ light }) {
               },
             })}
           >
-            <MDBox component="li" pr={2} lineHeight={1}>
-              <Link href="https://www.creative-tim.com/" target="_blank">
+            {/* <MDBox component="li" pr={2} lineHeight={1}>
+              <Link href="" target="_blank">
                 <MDTypography
                   variant="button"
                   fontWeight="regular"
@@ -124,7 +124,7 @@ function Footer({ light }) {
                   License
                 </MDTypography>
               </Link>
-            </MDBox>
+            </MDBox> */}
           </MDBox>
         </MDBox>
       </Container>
