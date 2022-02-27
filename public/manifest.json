@@ -1,9 +1,9 @@
 {
-  "short_name": "Material Dashboard",
-  "name": "Material Dashboard 2 React",
+  "short_name": "The Weekend Expertise",
+  "name": "The Weekend Expertise",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "twe.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/png"
     }
