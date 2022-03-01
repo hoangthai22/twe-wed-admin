@@ -25,9 +25,9 @@ import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import DataTable from "examples/Tables/DataTable";
 // Data
-import authorsTableData from "layouts/tables/data/authorsTableData";
+import authorsTableData from "layouts/booking/data/authorsTableData";
 
-function Tables() {
+function Booking() {
   const { columns, rows } = authorsTableData();
 
   return (
@@ -48,7 +48,7 @@ function Tables() {
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  Danh sách giảng viên
+                  Danh sách booking
                 </MDTypography>
               </MDBox>
               <MDBox pt={3}>
@@ -69,4 +69,4 @@ function Tables() {
   );
 }
 
-export default Tables;
+export default Booking;
