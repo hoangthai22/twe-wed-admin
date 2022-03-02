@@ -29,7 +29,6 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
 
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
-import Feedback from "layouts/dashboard/components/OrdersOverview";
 
 function Dashboard() {
   return (
@@ -98,14 +97,11 @@ function Dashboard() {
             </MDBox>
           </Grid>
         </Grid>
-        <MDBox mt={4.5}>
-          <Grid item xs={12} md={6} lg={100}>
-            <Projects />
-          </Grid>
-        </MDBox>
-        <MDBox mt={4.5}>
-          <Grid item xs={12} md={6} lg={100}>
-            <Feedback />
+        <MDBox>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6} lg={50}>
+              <Projects />
+            </Grid>
           </Grid>
         </MDBox>
       </MDBox>
