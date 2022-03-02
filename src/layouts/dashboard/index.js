@@ -23,20 +23,19 @@ import MDBox from "components/MDBox";
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import Footer from "examples/Footer";
-// import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
+import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatisticsCard";
 
 // Data
 
 // Dashboard components
 import Projects from "layouts/dashboard/components/Projects";
-import Feedback from "layouts/dashboard/components/OrdersOverview";
 
 function Dashboard() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <MDBox>
-        {/* <Grid container spacing={3}>
+      <MDBox py={3}>
+        <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
@@ -97,15 +96,12 @@ function Dashboard() {
               />
             </MDBox>
           </Grid>
-        </Grid> */}
+        </Grid>
         <MDBox>
-          <Grid item xs={12} md={6} lg={100}>
-            <Projects />
-          </Grid>
-        </MDBox>
-        <MDBox mt={4.5}>
-          <Grid item xs={12} md={6} lg={100}>
-            <Feedback />
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6} lg={50}>
+              <Projects />
+            </Grid>
           </Grid>
         </MDBox>
       </MDBox>
