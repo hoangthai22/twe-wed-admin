@@ -48,7 +48,7 @@ function Tables() {
                 coloredShadow="info"
               >
                 <MDTypography variant="h6" color="white">
-                  Danh sách giảng viên
+                  Danh sách mentor
                 </MDTypography>
               </MDBox>
               <MDBox pt={3}>
