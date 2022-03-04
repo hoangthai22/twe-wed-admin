@@ -37,6 +37,7 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
+
 import Meeting from "layouts/meeting";
 import Mentor from "layouts/mentor";
 import User from "layouts/user";
