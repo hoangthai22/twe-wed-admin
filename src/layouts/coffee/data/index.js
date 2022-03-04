@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 
 export const Author = ({ image, name, email }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
-    <MDAvatar src={image} name={name} size="sm" />
+    <MDAvatar src={image} name={name} size="lg" />
     <MDBox ml={2} lineHeight={1}>
       <MDTypography display="block" variant="button" fontWeight="medium">
         {name}
@@ -35,55 +35,37 @@ export const Job = ({ title, description }) => (
   </MDBox>
 );
 
-// function getMajorString(majorList) {
-//   let majors = "";
-//   // eslint-disable-next-line array-callback-return
-//   majorList.map((major) => {
-//     // eslint-disable-next-line eqeqeq
-//     if (majors != "") {
-//       majors = `${majors}, ${major}`;
-//     } else {
-//       majors = major;
-//     }
-//   });
-
-//   return majors;
-// }
-
 export default function data() {
-  const [skill, setSkill] = useState([]);
+  const [coffees, setCoffees] = useState([]);
+
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/api/v1/skills")
+      .get("https://theweekendexpertise.azurewebsites.net/api/v1/cafe?pageIndex=1&pageSize=20")
       .then((res) => {
-        setSkill(res.data);
+        console.log(res.data);
+        console.log(coffees);
+        setCoffees(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   function dataTable() {
-    return skill.map((item) => ({
-      // author: <Author image={item.image} name={item.fullname} email="" />,
-      // function: <Job title={item.listMajor} description="" />,
+    return coffees.map((item) => ({
+      name: <Author image={item.image} name={item.name} email="" />,
 
-      // birthday: (
-      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-      //     {item.birthday}
-      //   </MDTypography>
-      // ),
-      // address: (
-      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-      //     {item.address}
-      //   </MDTypography>
-      // ),
-      id: (
+      description: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.id}
+          {item.description}
         </MDTypography>
       ),
-      name: (
+      address: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.name}
+          {item.street}
+        </MDTypography>
+      ),
+      phone: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          0123457689
         </MDTypography>
       ),
       status: (
@@ -101,11 +83,11 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "ID", accessor: "id", width: "25%", align: "left" },
-      // { Header: "Chuyên ngành", accessor: "function", align: "center" },
-      { Header: "Kỹ năng", accessor: "name", align: "center" },
+      { Header: "Tên coffee", accessor: "name", width: "10%", align: "left" },
+      { Header: "Địa chỉ", accessor: "address", width: "25%", align: "center" },
+      { Header: "Mô tả ", accessor: "description", align: "center" },
+      { Header: "Điện thoại", accessor: "phone", align: "center" },
       { Header: "Trạng thái", accessor: "status", align: "center" },
-      { Header: "Thao tác", accessor: "action", align: "center" },
     ],
 
     rows: dataTable(),

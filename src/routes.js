@@ -41,6 +41,7 @@ import Meeting from "layouts/meeting";
 import Mentor from "layouts/mentor";
 import User from "layouts/user";
 import Skill from "layouts/skill";
+import Coffee from "layouts/coffee";
 // import Notifications from "layouts/notifications";
 // import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -89,6 +90,14 @@ const routes = [
     icon: <Icon fontSize="small">highlight</Icon>,
     route: "/skill",
     component: <Skill />,
+  },
+  {
+    type: "collapse",
+    name: "Coffee",
+    key: "coffee",
+    icon: <Icon fontSize="small">highlight</Icon>,
+    route: "/coffee",
+    component: <Coffee />,
   },
   // {
   //   type: "collapse",
