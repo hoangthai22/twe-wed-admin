@@ -37,9 +37,13 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
-import Tables from "layouts/tables";
-import Notifications from "layouts/notifications";
-import Profile from "layouts/profile";
+
+import Meeting from "layouts/meeting";
+import Mentor from "layouts/mentor";
+import User from "layouts/user";
+import Skill from "layouts/skill";
+// import Notifications from "layouts/notifications";
+// import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 import SignUp from "layouts/authentication/sign-up";
 
@@ -57,28 +61,52 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Tables",
-    key: "tables",
+    name: "Meeting",
+    key: "meeting",
+    icon: <Icon fontSize="small">groups</Icon>,
+    route: "/meeting",
+    component: <Meeting />,
+  },
+  {
+    type: "collapse",
+    name: "Mentor",
+    key: "mentor",
     icon: <Icon fontSize="small">table_view</Icon>,
-    route: "/tables",
-    component: <Tables />,
+    route: "/mentor",
+    component: <Mentor />,
   },
   {
     type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon: <Icon fontSize="small">notifications</Icon>,
-    route: "/notifications",
-    component: <Notifications />,
+    name: "User",
+    key: "user",
+    icon: <Icon fontSize="small">person_outline</Icon>,
+    route: "/user",
+    component: <User />,
   },
   {
     type: "collapse",
-    name: "Profile",
-    key: "profile",
-    icon: <Icon fontSize="small">person</Icon>,
-    route: "/profile",
-    component: <Profile />,
+    name: "Skill",
+    key: "skill",
+    icon: <Icon fontSize="small">highlight</Icon>,
+    route: "/skill",
+    component: <Skill />,
   },
+  // {
+  //   type: "collapse",
+  //   name: "Notifications",
+  //   key: "notifications",
+  //   icon: <Icon fontSize="small">notifications</Icon>,
+  //   route: "/notifications",
+  //   component: <Notifications />,
+  // },
+  // {
+  //   type: "collapse",
+  //   name: "Profile",
+  //   key: "profile",
+  //   icon: <Icon fontSize="small">person</Icon>,
+  //   route: "/profile",
+  //   component: <Profile />,
+  // },
   {
     type: "collapse",
     name: "Sign In",
