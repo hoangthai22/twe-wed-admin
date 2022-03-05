@@ -84,11 +84,13 @@ export default function data() {
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "Tên coffee", accessor: "name", width: "25%", align: "left" },
+      { Header: "Tên coffee", accessor: "name", width: "20%", align: "left" },
       { Header: "Địa chỉ", accessor: "address", width: "20%", align: "left" },
+      { Header: "Thời gian hoạt động", accessor: "time", width: "15%", align: "left" },
       { Header: "Mô tả ", accessor: "description", align: "center" },
       { Header: "Điện thoại", accessor: "phone", align: "center" },
       { Header: "Trạng thái", accessor: "status", align: "center" },
+      { Header: "Thao tác", accessor: "action", align: "left" },
     ],
 
     rows: dataTable(),
