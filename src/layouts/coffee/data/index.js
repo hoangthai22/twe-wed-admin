@@ -84,8 +84,8 @@ export default function data() {
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "Tên coffee", accessor: "name", width: "10%", align: "left" },
-      { Header: "Địa chỉ", accessor: "address", width: "25%", align: "center" },
+      { Header: "Tên coffee", accessor: "name", width: "25%", align: "left" },
+      { Header: "Địa chỉ", accessor: "address", width: "20%", align: "left" },
       { Header: "Mô tả ", accessor: "description", align: "center" },
       { Header: "Điện thoại", accessor: "phone", align: "center" },
       { Header: "Trạng thái", accessor: "status", align: "center" },

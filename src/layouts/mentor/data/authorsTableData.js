@@ -122,9 +122,9 @@ export default function data() {
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "Giảng viên", accessor: "author", width: "25%", align: "left" },
-      { Header: "Chuyên ngành", accessor: "function", width: "15%", align: "left" },
-      { Header: "Mô tả", accessor: "user", width: "15%", align: "left" },
+      { Header: "Giảng viên", accessor: "author", width: "20%", align: "left" },
+      { Header: "Chuyên ngành", accessor: "function", width: "10%", align: "left" },
+      { Header: "Mô tả", accessor: "user", width: "10%", align: "left" },
       { Header: "Ngày sinh", accessor: "birthday", align: "center" },
       { Header: "Địa chỉ", accessor: "address", align: "center" },
       { Header: "Giới tính", accessor: "sex", align: "center" },
