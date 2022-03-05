@@ -101,6 +101,7 @@ export default function data() {
 
   return {
     columns: [
+      { Header: "STT", accessor: "stt", align: "left" },
       { Header: "ID", accessor: "id", width: "25%", align: "left" },
       // { Header: "Chuyên ngành", accessor: "function", align: "center" },
       { Header: "Kỹ năng", accessor: "name", align: "center" },

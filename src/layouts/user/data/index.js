@@ -115,9 +115,11 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Người dùng", accessor: "user", width: "35%", align: "left" },
+      { Header: "STT", accessor: "stt", align: "left" },
+      { Header: "Người dùng", accessor: "user", width: "20%", align: "left" },
       { Header: "Chuyên ngành", accessor: "function", align: "left" },
       { Header: "Ngày sinh", accessor: "birthday", align: "center" },
+      { Header: "Email", accessor: "email", align: "center" },
       { Header: "Địa chỉ", accessor: "address", align: "center" },
       { Header: "Giới tính", accessor: "sex", align: "center" },
       { Header: "Điện thoại", accessor: "phone", align: "center" },

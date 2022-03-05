@@ -29,9 +29,9 @@ import MDTypography from "components/MDTypography";
 import DataTable from "examples/Tables/DataTable";
 
 // Data
-import data from "layouts/dashboard/components/Projects/data";
+import data from "layouts/dashboard/components/BookingWeek/data";
 
-function Projects() {
+function BookingWeek() {
   const { columns, rows } = data();
   const [menu, setMenu] = useState(null);
 
@@ -64,22 +64,8 @@ function Projects() {
       <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
         <MDBox>
           <MDTypography variant="h6" gutterBottom>
-            Today Booking
+            This Week Booking
           </MDTypography>
-          <MDBox display="flex" alignItems="center" lineHeight={0}>
-            <Icon
-              sx={{
-                fontWeight: "bold",
-                color: ({ palette: { info } }) => info.main,
-                mt: -0.5,
-              }}
-            >
-              done
-            </Icon>
-            <MDTypography variant="button" fontWeight="regular" color="text">
-              &nbsp;<strong>1 booking</strong> this today
-            </MDTypography>
-          </MDBox>
         </MDBox>
         <MDBox color="text" px={2}>
           <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
@@ -101,4 +87,4 @@ function Projects() {
   );
 }
 
-export default Projects;
+export default BookingWeek;

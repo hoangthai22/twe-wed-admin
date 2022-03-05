@@ -83,6 +83,7 @@ export default function data() {
 
   return {
     columns: [
+      { Header: "STT", accessor: "stt", align: "left" },
       { Header: "Tên coffee", accessor: "name", width: "10%", align: "left" },
       { Header: "Địa chỉ", accessor: "address", width: "25%", align: "center" },
       { Header: "Mô tả ", accessor: "description", align: "center" },

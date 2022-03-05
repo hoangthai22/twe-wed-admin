@@ -51,6 +51,7 @@ function getMajorString(majorList) {
 }
 
 export default function data() {
+  // let stt = 1;
   const [mentor, setMentor] = useState([]);
   useEffect(() => {
     axios
@@ -72,6 +73,11 @@ export default function data() {
 
   function dataTable() {
     return mentor.map((item) => ({
+      stt: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          abc
+        </MDTypography>
+      ),
       author: <Author image={item.image} name={item.fullname} email="" />,
       function: <Job title={item.listMajor} description="" />,
 
@@ -115,8 +121,10 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Giảng viên", accessor: "author", width: "35%", align: "left" },
-      { Header: "Chuyên ngành", accessor: "function", align: "left" },
+      { Header: "STT", accessor: "stt", align: "left" },
+      { Header: "Giảng viên", accessor: "author", width: "25%", align: "left" },
+      { Header: "Chuyên ngành", accessor: "function", width: "15%", align: "left" },
+      { Header: "Mô tả", accessor: "user", width: "15%", align: "left" },
       { Header: "Ngày sinh", accessor: "birthday", align: "center" },
       { Header: "Địa chỉ", accessor: "address", align: "center" },
       { Header: "Giới tính", accessor: "sex", align: "center" },

@@ -28,7 +28,9 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
 // Data
 
 // Dashboard components
-import Projects from "layouts/dashboard/components/Projects";
+import BookingToday from "layouts/dashboard/components/BookingToday";
+import BookingWeek from "layouts/dashboard/components/BookingWeek";
+import TopMentor from "layouts/dashboard/components/TopMentor";
 
 function Dashboard() {
   return (
@@ -71,7 +73,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="success"
                 icon="store"
-                title="Revenue"
+                title="Mentors"
                 count=""
                 percentage={{
                   color: "",
@@ -86,7 +88,7 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="primary"
                 icon="person_add"
-                title="Followers"
+                title="Users"
                 count=""
                 percentage={{
                   color: "",
@@ -100,8 +102,18 @@ function Dashboard() {
         <MDBox>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6} lg={50}>
-              <Projects />
+              <BookingToday />
             </Grid>
+          </Grid>
+        </MDBox>
+        <MDBox mt={4.5}>
+          <Grid item xs={12} md={6} lg={100}>
+            <BookingWeek />
+          </Grid>
+        </MDBox>
+        <MDBox mt={4.5}>
+          <Grid item xs={12} md={6} lg={100}>
+            <TopMentor />
           </Grid>
         </MDBox>
       </MDBox>
