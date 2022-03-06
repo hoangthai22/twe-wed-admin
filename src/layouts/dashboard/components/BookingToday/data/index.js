@@ -72,7 +72,27 @@ export default function data() {
 
   function dataTable() {
     return mentor.map((item) => ({
-      author: <Author image={item.image} name={item.fullname} email="" />,
+      stt: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          1
+        </MDTypography>
+      ),
+      session: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.birthday}
+        </MDTypography>
+      ),
+      member: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.birthday}
+        </MDTypography>
+      ),
+      mentor: <Author image={item.image} name={item.fullname} />,
+      price: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.birthday}
+        </MDTypography>
+      ),
       function: <Job title={item.listMajor} description="" />,
 
       birthday: (
@@ -80,14 +100,14 @@ export default function data() {
           {item.birthday}
         </MDTypography>
       ),
-      address: (
+      location: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.address}
         </MDTypography>
       ),
-      sex: (
+      date_time: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.sex === "male" ? "Nam" : "Nữ"}
+          {item.address}
         </MDTypography>
       ),
       phone: (

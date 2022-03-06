@@ -78,8 +78,13 @@ export default function data() {
           abc
         </MDTypography>
       ),
-      author: <Author image={item.image} name={item.fullname} email="" />,
+      author: <Author image={item.image} name={item.fullname} />,
       function: <Job title={item.listMajor} description="" />,
+      slogan: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.slogan}
+        </MDTypography>
+      ),
 
       birthday: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
@@ -124,7 +129,7 @@ export default function data() {
       { Header: "STT", accessor: "stt", align: "left" },
       { Header: "Giảng viên", accessor: "author", width: "20%", align: "left" },
       { Header: "Chuyên ngành", accessor: "function", width: "10%", align: "left" },
-      { Header: "Mô tả", accessor: "user", width: "10%", align: "left" },
+      { Header: "Mô tả", accessor: "slogan", width: "10%", align: "left" },
       { Header: "Ngày sinh", accessor: "birthday", align: "center" },
       { Header: "Địa chỉ", accessor: "address", align: "center" },
       { Header: "Giới tính", accessor: "sex", align: "center" },
