@@ -62,7 +62,7 @@ export default function data() {
   }, []);
 
   function dataTable() {
-    return skill.map((item) => ({
+    return skill.map((item, index) => ({
       // author: <Author image={item.image} name={item.fullname} email="" />,
       // function: <Job title={item.listMajor} description="" />,
 
@@ -76,6 +76,11 @@ export default function data() {
       //     {item.address}
       //   </MDTypography>
       // ),
+      stt: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {index + 1}
+        </MDTypography>
+      ),
       id: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.id}

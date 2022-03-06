@@ -11,33 +11,6 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 // import MDBadge from "components/MDBadge";
-
-// export default function data() {
-//   const [value] = React.useState(2);
-//   // const avatars = (members) =>
-//   //   members.map(([image, name]) => (
-//   //     <Tooltip key={name} title={name} placeholder="bottom">
-//   //       <MDAvatar
-//   //         src={image}
-//   //         alt="name"
-//   //         size="xs"
-//   //         sx={{
-//   //           border: ({ borders: { borderWidth }, palette: { white } }) =>
-//   //             `${borderWidth[2]} solid ${white.main}`,
-//   //           cursor: "pointer",
-//   //           position: "relative",
-
-//   //           "&:not(:first-of-type)": {
-//   //             ml: -1.25,
-//   //           },
-
-//   //           "&:hover, &:focus": {
-//   //             zIndex: "10",
-//   //           },
-//   //         }}
-//   //       />
-//   //     </Tooltip>
-//   //   ));
 function getMajorString(majorList) {
   let majors = "";
   // eslint-disable-next-line array-callback-return
@@ -94,10 +67,10 @@ export default function data() {
   //   </MDBox>
   // );
   function dataTable() {
-    return mentor.map((item) => ({
+    return mentor.map((item, index) => ({
       stt: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          1
+          {index + 1}
         </MDTypography>
       ),
       mentor: <Author image={item.image} name={item.fullname} />,

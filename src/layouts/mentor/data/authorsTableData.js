@@ -50,7 +50,6 @@ function getMajorString(majorList) {
 }
 
 export default function data() {
-  // let stt = 1;
   const [mentor, setMentor] = useState([]);
   useEffect(() => {
     axios
@@ -71,10 +70,10 @@ export default function data() {
   }, []);
 
   function dataTable() {
-    return mentor.map((item) => ({
+    return mentor.map((item, index) => ({
       stt: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          abc
+          {index + 1}
         </MDTypography>
       ),
       author: <Author image={item.image} name={item.fullname} />,

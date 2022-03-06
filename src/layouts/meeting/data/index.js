@@ -71,7 +71,12 @@ export default function data() {
   }, []);
 
   function dataTable() {
-    return mentor.map((item) => ({
+    return mentor.map((item, index) => ({
+      stt: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {index + 1}
+        </MDTypography>
+      ),
       author: <Author image={item.image} name={item.fullname} email="" />,
       function: <Job title={item.listMajor} description="" />,
 

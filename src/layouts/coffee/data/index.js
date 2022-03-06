@@ -51,10 +51,10 @@ export default function data() {
   }, []);
 
   function dataTable() {
-    return coffees.map((item) => ({
+    return coffees.map((item, index) => ({
       stt: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          1
+          {index + 1}
         </MDTypography>
       ),
       name: <Coffee image={item.image} name={item.name} email="" />,
