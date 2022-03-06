@@ -15,23 +15,22 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { useEffect, useState } from "react";
 
-export const Author = ({ image, name, email }) => (
+export const Author = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
     <MDAvatar src={image} name={name} size="sm" />
     <MDBox ml={2} lineHeight={1}>
       <MDTypography display="block" variant="button" fontWeight="medium">
         {name}
       </MDTypography>
-      <MDTypography variant="caption">{email}</MDTypography>
+      {/* <MDTypography variant="caption">{email}</MDTypography> */}
     </MDBox>
   </MDBox>
 );
-export const Job = ({ title, description }) => (
+export const Job = ({ title }) => (
   <MDBox lineHeight={1} textAlign="left">
     <MDTypography display="block" variant="caption" color="text" fontWeight="medium">
       {title}
     </MDTypography>
-    <MDTypography variant="caption">{description}</MDTypography>
   </MDBox>
 );
 
@@ -129,7 +128,7 @@ export default function data() {
       { Header: "STT", accessor: "stt", align: "left" },
       { Header: "Giảng viên", accessor: "author", width: "20%", align: "left" },
       { Header: "Chuyên ngành", accessor: "function", width: "10%", align: "left" },
-      { Header: "Mô tả", accessor: "slogan", width: "10%", align: "left" },
+      { Header: "slogan", accessor: "slogan", width: "10%", align: "left" },
       { Header: "Ngày sinh", accessor: "birthday", align: "center" },
       { Header: "Địa chỉ", accessor: "address", align: "center" },
       { Header: "Giới tính", accessor: "sex", align: "center" },

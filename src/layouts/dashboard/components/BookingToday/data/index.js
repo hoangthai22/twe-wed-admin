@@ -15,23 +15,23 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { useEffect, useState } from "react";
 
-export const Author = ({ image, name, email }) => (
+export const Author = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
     <MDAvatar src={image} name={name} size="sm" />
     <MDBox ml={2} lineHeight={1}>
       <MDTypography display="block" variant="button" fontWeight="medium">
         {name}
       </MDTypography>
-      <MDTypography variant="caption">{email}</MDTypography>
+      {/* <MDTypography variant="caption">{email}</MDTypography> */}
     </MDBox>
   </MDBox>
 );
-export const Job = ({ title, description }) => (
+export const Job = ({ title }) => (
   <MDBox lineHeight={1} textAlign="left">
     <MDTypography display="block" variant="caption" color="text" fontWeight="medium">
       {title}
     </MDTypography>
-    <MDTypography variant="caption">{description}</MDTypography>
+    {/* <MDTypography variant="caption">{description}</MDTypography> */}
   </MDBox>
 );
 
@@ -95,11 +95,6 @@ export default function data() {
       ),
       function: <Job title={item.listMajor} description="" />,
 
-      birthday: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.birthday}
-        </MDTypography>
-      ),
       location: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.address}
