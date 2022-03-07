@@ -83,7 +83,11 @@ export default function data() {
           {item.slogan}
         </MDTypography>
       ),
-
+      email: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.email}
+        </MDTypography>
+      ),
       birthday: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.birthday}
@@ -97,11 +101,6 @@ export default function data() {
       sex: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.sex === "male" ? "Nam" : "Nữ"}
-        </MDTypography>
-      ),
-      email: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.email}
         </MDTypography>
       ),
       status: (
@@ -124,16 +123,16 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "Giảng viên", accessor: "author", width: "20%", align: "left" },
+      { Header: "STT", accessor: "stt", width: "5%", align: "left" },
+      { Header: "Giảng viên", accessor: "author", width: "18%", align: "left" },
       { Header: "Chuyên ngành", accessor: "function", width: "10%", align: "left" },
       { Header: "slogan", accessor: "slogan", width: "10%", align: "left" },
       { Header: "email", accessor: "email", align: "center" },
       { Header: "Ngày sinh", accessor: "birthday", align: "center" },
       { Header: "Địa chỉ", accessor: "address", align: "center" },
       { Header: "Giới tính", accessor: "sex", align: "center" },
-      { Header: "Trạng thái", accessor: "status", align: "center" },
-      { Header: "Thao tác", accessor: "action", align: "center" },
+      { Header: "Trạng thái", accessor: "status", width: "10%", align: "center" },
+      { Header: "Thao tác", accessor: "action", width: "8%", align: "center" },
     ],
 
     rows: dataTable(),
