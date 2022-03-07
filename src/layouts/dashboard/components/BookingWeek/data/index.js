@@ -109,11 +109,6 @@ export default function data() {
           {item.address}
         </MDTypography>
       ),
-      phone: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.phone}
-        </MDTypography>
-      ),
       status: (
         <MDBox ml={-1}>
           <MDBadge
@@ -141,7 +136,6 @@ export default function data() {
       { Header: "giá", accessor: "price", align: "center" },
       { Header: "địa điểm", accessor: "location", align: "center" },
       { Header: "thời gian", accessor: "date_time", align: "center" },
-      { Header: "điện thoại", accessor: "phone", align: "left" },
       { Header: "trạng thái", accessor: "status", align: "center" },
     ],
 

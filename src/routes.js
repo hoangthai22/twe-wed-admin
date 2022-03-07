@@ -43,6 +43,8 @@ import Mentor from "layouts/mentor";
 import User from "layouts/user";
 import Skill from "layouts/skill";
 import Coffee from "layouts/coffee";
+import Subject from "layouts/subject";
+import Major from "layouts/major";
 // import Notifications from "layouts/notifications";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
@@ -99,6 +101,22 @@ const routes = [
     icon: <Icon fontSize="small">store</Icon>,
     route: "/coffee",
     component: <Coffee />,
+  },
+  {
+    type: "collapse",
+    name: "Subject",
+    key: "subject",
+    icon: <Icon fontSize="small">subject</Icon>,
+    route: "/subject",
+    component: <Subject />,
+  },
+  {
+    type: "collapse",
+    name: "Major",
+    key: "major",
+    icon: <Icon fontSize="small">menu_book</Icon>,
+    route: "/major",
+    component: <Major />,
   },
   // {
   //   type: "collapse",

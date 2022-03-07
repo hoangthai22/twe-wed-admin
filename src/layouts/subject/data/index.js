@@ -15,103 +15,90 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { useEffect, useState } from "react";
 
-export const Author = ({ image, name }) => (
+export const Author = ({ image, name, email }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
     <MDAvatar src={image} name={name} size="sm" />
     <MDBox ml={2} lineHeight={1}>
       <MDTypography display="block" variant="button" fontWeight="medium">
         {name}
       </MDTypography>
-      {/* <MDTypography variant="caption">{email}</MDTypography> */}
+      <MDTypography variant="caption">{email}</MDTypography>
     </MDBox>
   </MDBox>
 );
-export const Job = ({ title }) => (
+export const Job = ({ title, description }) => (
   <MDBox lineHeight={1} textAlign="left">
     <MDTypography display="block" variant="caption" color="text" fontWeight="medium">
       {title}
     </MDTypography>
+    <MDTypography variant="caption">{description}</MDTypography>
   </MDBox>
 );
 
-function getMajorString(majorList) {
-  let majors = "";
-  // eslint-disable-next-line array-callback-return
-  majorList.map((major) => {
-    // eslint-disable-next-line eqeqeq
-    if (majors != "") {
-      majors = `${majors}, ${major}`;
-    } else {
-      majors = major;
-    }
-  });
+// function getMajorString(majorList) {
+//   let majors = "";
+//   // eslint-disable-next-line array-callback-return
+//   majorList.map((major) => {
+//     // eslint-disable-next-line eqeqeq
+//     if (majors != "") {
+//       majors = `${majors}, ${major}`;
+//     } else {
+//       majors = major;
+//     }
+//   });
 
-  return majors;
-}
+//   return majors;
+// }
 
 export default function data() {
-  const [mentor, setMentor] = useState([]);
+  const [subject, setSubject] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/api/v1/mentors?pageIndex=1&pageSize=6")
+      .get("https://theweekendexpertise.azurewebsites.net/api/v1/subjects?pageIndex=1&pageSize=20")
       .then((res) => {
-        const mentors = res.data;
-        // eslint-disable-next-line array-callback-return
-        mentors.map((item) => {
-          // eslint-disable-next-line no-param-reassign
-          item.listMajor = getMajorString(item.listMajor);
-          const day = item.birthday.split(" ")[0];
-          // eslint-disable-next-line no-param-reassign
-          item.birthday = day;
-        });
-        setMentor(mentors);
+        setSubject(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   function dataTable() {
-    return mentor.map((item, index) => ({
+    return subject.map((item, index) => ({
+      // author: <Author image={item.image} name={item.fullname} email="" />,
+      // function: <Job title={item.listMajor} description="" />,
+
+      // birthday: (
+      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+      //     {item.birthday}
+      //   </MDTypography>
+      // ),
+      // address: (
+      //   <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+      //     {item.address}
+      //   </MDTypography>
+      // ),
       stt: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {index + 1}
         </MDTypography>
       ),
-      author: <Author image={item.image} name={item.fullname} />,
-      function: <Job title={item.listMajor} description="" />,
-      slogan: (
+      id: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.slogan}
+          {item.id}
         </MDTypography>
       ),
-
-      birthday: (
+      name: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.birthday}
+          {item.name}
         </MDTypography>
       ),
-      address: (
+      majorID: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.address}
-        </MDTypography>
-      ),
-      sex: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.sex === "male" ? "Nam" : "Nữ"}
-        </MDTypography>
-      ),
-      email: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.email}
+          {item.majorId}
         </MDTypography>
       ),
       status: (
         <MDBox ml={-1}>
-          <MDBadge
-            badgeContent={item.status ? "Active" : "InActive"}
-            color="success"
-            variant="gradient"
-            size="sm"
-          />
+          <MDBadge badgeContent="Active" color="success" variant="gradient" size="sm" />
         </MDBox>
       ),
       action: (
@@ -125,13 +112,9 @@ export default function data() {
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "Giảng viên", accessor: "author", width: "20%", align: "left" },
-      { Header: "Chuyên ngành", accessor: "function", width: "10%", align: "left" },
-      { Header: "slogan", accessor: "slogan", width: "10%", align: "left" },
-      { Header: "email", accessor: "email", align: "center" },
-      { Header: "Ngày sinh", accessor: "birthday", align: "center" },
-      { Header: "Địa chỉ", accessor: "address", align: "center" },
-      { Header: "Giới tính", accessor: "sex", align: "center" },
+      { Header: "ID", accessor: "id", width: "25%", align: "left" },
+      { Header: "Subject", accessor: "name", align: "center" },
+      { Header: "MajorID", accessor: "majorID", align: "center" },
       { Header: "Trạng thái", accessor: "status", align: "center" },
       { Header: "Thao tác", accessor: "action", align: "center" },
     ],
