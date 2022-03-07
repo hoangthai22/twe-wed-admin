@@ -43,10 +43,12 @@ import Mentor from "layouts/mentor";
 import User from "layouts/user";
 import Skill from "layouts/skill";
 import Coffee from "layouts/coffee";
+import Subject from "layouts/subject";
+import Major from "layouts/major";
 // import Notifications from "layouts/notifications";
-// import Profile from "layouts/profile";
+import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
-import SignUp from "layouts/authentication/sign-up";
+// import SignUp from "layouts/authentication/sign-up";
 
 // @mui icons
 import Icon from "@mui/material/Icon";
@@ -96,9 +98,25 @@ const routes = [
     type: "collapse",
     name: "Coffee",
     key: "coffee",
-    icon: <Icon fontSize="small">highlight</Icon>,
+    icon: <Icon fontSize="small">store</Icon>,
     route: "/coffee",
     component: <Coffee />,
+  },
+  {
+    type: "collapse",
+    name: "Subject",
+    key: "subject",
+    icon: <Icon fontSize="small">subject</Icon>,
+    route: "/subject",
+    component: <Subject />,
+  },
+  {
+    type: "collapse",
+    name: "Major",
+    key: "major",
+    icon: <Icon fontSize="small">menu_book</Icon>,
+    route: "/major",
+    component: <Major />,
   },
   // {
   //   type: "collapse",
@@ -108,30 +126,24 @@ const routes = [
   //   route: "/notifications",
   //   component: <Notifications />,
   // },
-  // {
-  //   type: "collapse",
-  //   name: "Profile",
-  //   key: "profile",
-  //   icon: <Icon fontSize="small">person</Icon>,
-  //   route: "/profile",
-  //   component: <Profile />,
-  // },
   {
-    type: "collapse",
-    name: "Sign In",
+    key: "profile",
+    route: "/profile",
+    component: <Profile />,
+  },
+  {
     key: "sign-in",
-    icon: <Icon fontSize="small">login</Icon>,
     route: "/authentication/sign-in",
     component: <SignIn />,
   },
-  {
-    type: "collapse",
-    name: "Sign Up",
-    key: "sign-up",
-    icon: <Icon fontSize="small">assignment</Icon>,
-    route: "/authentication/sign-up",
-    component: <SignUp />,
-  },
+  // {
+  //   type: "collapse",
+  //   name: "Sign Up",
+  //   key: "sign-up",
+  //   icon: <Icon fontSize="small">assignment</Icon>,
+  //   route: "/authentication/sign-up",
+  //   component: <SignUp />,
+  // },
 ];
 
 export default routes;

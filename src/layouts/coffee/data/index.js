@@ -15,7 +15,7 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { useEffect, useState } from "react";
 
-export const Author = ({ image, name, email }) => (
+export const Coffee = ({ image, name, email }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
     <MDAvatar src={image} name={name} size="lg" />
     <MDBox ml={2} lineHeight={1}>
@@ -37,6 +37,7 @@ export const Job = ({ title, description }) => (
 
 export default function data() {
   const [coffees, setCoffees] = useState([]);
+  // const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     axios
@@ -50,8 +51,13 @@ export default function data() {
   }, []);
 
   function dataTable() {
-    return coffees.map((item) => ({
-      name: <Author image={item.image} name={item.name} email="" />,
+    return coffees.map((item, index) => ({
+      stt: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {index + 1}
+        </MDTypography>
+      ),
+      name: <Coffee image={item.image} name={item.name} email="" />,
 
       description: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
@@ -60,12 +66,12 @@ export default function data() {
       ),
       address: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.street}
+          {item.street}, {item.distric}
         </MDTypography>
       ),
-      phone: (
+      time: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          0123457689
+          {item.openTime} - {item.closeTime}
         </MDTypography>
       ),
       status: (
@@ -83,11 +89,13 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Tên coffee", accessor: "name", width: "10%", align: "left" },
-      { Header: "Địa chỉ", accessor: "address", width: "25%", align: "center" },
+      { Header: "STT", accessor: "stt", align: "left" },
+      { Header: "Tên coffee", accessor: "name", width: "20%", align: "left" },
+      { Header: "Địa chỉ", accessor: "address", width: "20%", align: "left" },
+      { Header: "Thời gian hoạt động", accessor: "time", width: "15%", align: "left" },
       { Header: "Mô tả ", accessor: "description", align: "center" },
-      { Header: "Điện thoại", accessor: "phone", align: "center" },
       { Header: "Trạng thái", accessor: "status", align: "center" },
+      { Header: "Thao tác", accessor: "action", align: "left" },
     ],
 
     rows: dataTable(),

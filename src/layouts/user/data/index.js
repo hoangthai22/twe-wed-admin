@@ -15,14 +15,14 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { useEffect, useState } from "react";
 
-export const Author = ({ image, name, email }) => (
+export const User = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
     <MDAvatar src={image} name={name} size="sm" />
     <MDBox ml={2} lineHeight={1}>
       <MDTypography display="block" variant="button" fontWeight="medium">
         {name}
       </MDTypography>
-      <MDTypography variant="caption">{email}</MDTypography>
+      {/* <MDTypography variant="caption">{email}</MDTypography> */}
     </MDBox>
   </MDBox>
 );
@@ -35,49 +35,62 @@ export const Job = ({ title, description }) => (
   </MDBox>
 );
 
-function getMajorString(majorList) {
-  let majors = "";
-  // eslint-disable-next-line array-callback-return
-  majorList.map((major) => {
-    // eslint-disable-next-line eqeqeq
-    if (majors != "") {
-      majors = `${majors}, ${major}`;
-    } else {
-      majors = major;
-    }
-  });
+// function getMajorString(majorList) {
+//   let majors = "";
+//   // eslint-disable-next-line array-callback-return
+//   majorList.map((major) => {
+//     // eslint-disable-next-line eqeqeq
+//     if (majors != "") {
+//       majors = `${majors}, ${major}`;
+//     } else {
+//       majors = major;
+//     }
+//   });
 
-  return majors;
-}
+//   return majors;
+// }
 
 export default function data() {
-  const [mentor, setMentor] = useState([]);
+  const [user, setUser] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/api/v1/mentors")
+      .get("https://theweekendexpertise.azurewebsites.net/members?pageIndex=1&pageSize=4")
       .then((res) => {
-        const mentors = res.data;
+        const users = res.data;
         // eslint-disable-next-line array-callback-return
-        mentors.map((item) => {
+        users.map((item) => {
           // eslint-disable-next-line no-param-reassign
-          item.listMajor = getMajorString(item.listMajor);
           const day = item.birthday.split(" ")[0];
           // eslint-disable-next-line no-param-reassign
           item.birthday = day;
         });
-        setMentor(mentors);
+        setUser(users);
       })
       .catch((error) => console.log(error));
   }, []);
 
   function dataTable() {
-    return mentor.map((item) => ({
-      author: <Author image={item.image} name={item.fullname} email="" />,
-      function: <Job title={item.listMajor} description="" />,
+    return user.map((item, index) => ({
+      stt: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {index + 1}
+        </MDTypography>
+      ),
+      user: <User image={item.image} name={item.fullname} />,
+      function: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.majorName}
+        </MDTypography>
+      ),
 
       birthday: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.birthday}
+        </MDTypography>
+      ),
+      email: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.email}
         </MDTypography>
       ),
       address: (
@@ -87,7 +100,7 @@ export default function data() {
       ),
       sex: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.sex === "male" ? "Nam" : "Nữ"}
+          {item.sex === "Male" ? "Nam" : "Nữ"}
         </MDTypography>
       ),
       phone: (
@@ -115,9 +128,11 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Người dùng", accessor: "user", width: "35%", align: "left" },
+      { Header: "STT", accessor: "stt", align: "left" },
+      { Header: "Người dùng", accessor: "user", width: "20%", align: "left" },
       { Header: "Chuyên ngành", accessor: "function", align: "left" },
       { Header: "Ngày sinh", accessor: "birthday", align: "center" },
+      { Header: "Email", accessor: "email", align: "center" },
       { Header: "Địa chỉ", accessor: "address", align: "center" },
       { Header: "Giới tính", accessor: "sex", align: "center" },
       { Header: "Điện thoại", accessor: "phone", align: "center" },

@@ -51,18 +51,18 @@ export const Job = ({ title, description }) => (
 // }
 
 export default function data() {
-  const [skill, setSkill] = useState([]);
+  const [subject, setSubject] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/api/v1/skills")
+      .get("https://theweekendexpertise.azurewebsites.net/api/v1/subjects?pageIndex=1&pageSize=20")
       .then((res) => {
-        setSkill(res.data);
+        setSubject(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   function dataTable() {
-    return skill.map((item, index) => ({
+    return subject.map((item, index) => ({
       // author: <Author image={item.image} name={item.fullname} email="" />,
       // function: <Job title={item.listMajor} description="" />,
 
@@ -91,6 +91,11 @@ export default function data() {
           {item.name}
         </MDTypography>
       ),
+      majorID: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.majorId}
+        </MDTypography>
+      ),
       status: (
         <MDBox ml={-1}>
           <MDBadge badgeContent="Active" color="success" variant="gradient" size="sm" />
@@ -108,8 +113,8 @@ export default function data() {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
       { Header: "ID", accessor: "id", width: "25%", align: "left" },
-      // { Header: "Chuyên ngành", accessor: "function", align: "center" },
-      { Header: "Kỹ năng", accessor: "name", align: "center" },
+      { Header: "Subject", accessor: "name", align: "center" },
+      { Header: "MajorID", accessor: "majorID", align: "center" },
       { Header: "Trạng thái", accessor: "status", align: "center" },
       { Header: "Thao tác", accessor: "action", align: "center" },
     ],

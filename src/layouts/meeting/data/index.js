@@ -71,7 +71,12 @@ export default function data() {
   }, []);
 
   function dataTable() {
-    return mentor.map((item) => ({
+    return mentor.map((item, index) => ({
+      stt: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {index + 1}
+        </MDTypography>
+      ),
       author: <Author image={item.image} name={item.fullname} email="" />,
       function: <Job title={item.listMajor} description="" />,
 
@@ -88,11 +93,6 @@ export default function data() {
       sex: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.sex === "male" ? "Nam" : "Nữ"}
-        </MDTypography>
-      ),
-      phone: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.phone}
         </MDTypography>
       ),
       status: (
@@ -115,13 +115,14 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "Nhóm", accessor: "group", width: "10%", align: "left" },
-      { Header: "Thành viên", accessor: "member", width: "25%", align: "center" },
-      { Header: "Giảng viên", accessor: "mentor", align: "center" },
-      { Header: "Địa điểm", accessor: "location", align: "center" },
-      { Header: "Thời gian", accessor: "date_time", align: "center" },
-      { Header: "Điện thoại", accessor: "phone", align: "center" },
-      { Header: "Trạng thái", accessor: "status", align: "center" },
+      { Header: "STT", accessor: "stt", align: "left" },
+      { Header: "session", accessor: "session", width: "25%", align: "left" },
+      { Header: "thành viên", accessor: "member", width: "10%", align: "left" },
+      { Header: "giảng viên", accessor: "mentor", align: "center" },
+      { Header: "giá", accessor: "price", align: "center" },
+      { Header: "địa điểm", accessor: "location", align: "center" },
+      { Header: "thời gian", accessor: "date_time", align: "center" },
+      { Header: "trạng thái", accessor: "status", align: "center" },
     ],
 
     rows: dataTable(),

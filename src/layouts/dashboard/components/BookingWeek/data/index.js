@@ -31,6 +31,7 @@ export const Job = ({ title }) => (
     <MDTypography display="block" variant="caption" color="text" fontWeight="medium">
       {title}
     </MDTypography>
+    {/* <MDTypography variant="caption">{description}</MDTypography> */}
   </MDBox>
 );
 
@@ -53,7 +54,7 @@ export default function data() {
   const [mentor, setMentor] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/api/v1/mentors?pageIndex=1&pageSize=6")
+      .get("https://theweekendexpertise.azurewebsites.net/api/v1/mentors")
       .then((res) => {
         const mentors = res.data;
         // eslint-disable-next-line array-callback-return
@@ -76,31 +77,36 @@ export default function data() {
           {index + 1}
         </MDTypography>
       ),
-      author: <Author image={item.image} name={item.fullname} />,
-      function: <Job title={item.listMajor} description="" />,
-      slogan: (
+      session: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.slogan}
+          {item.birthday}
         </MDTypography>
       ),
-      email: (
+      member: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.email}
+          {item.birthday}
         </MDTypography>
       ),
+      mentor: <Author image={item.image} name={item.fullname} />,
+      price: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.birthday}
+        </MDTypography>
+      ),
+
       birthday: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.birthday}
         </MDTypography>
       ),
-      address: (
+      location: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.address}
         </MDTypography>
       ),
-      sex: (
+      date_time: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.sex === "male" ? "Nam" : "Nữ"}
+          {item.address}
         </MDTypography>
       ),
       status: (
@@ -123,16 +129,14 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "STT", accessor: "stt", width: "5%", align: "left" },
-      { Header: "Giảng viên", accessor: "author", width: "18%", align: "left" },
-      { Header: "Chuyên ngành", accessor: "function", width: "10%", align: "left" },
-      { Header: "slogan", accessor: "slogan", width: "10%", align: "left" },
-      { Header: "email", accessor: "email", align: "center" },
-      { Header: "Ngày sinh", accessor: "birthday", align: "center" },
-      { Header: "Địa chỉ", accessor: "address", align: "center" },
-      { Header: "Giới tính", accessor: "sex", align: "center" },
-      { Header: "Trạng thái", accessor: "status", width: "10%", align: "center" },
-      { Header: "Thao tác", accessor: "action", width: "8%", align: "center" },
+      { Header: "STT", accessor: "stt", align: "left" },
+      { Header: "session", accessor: "session", width: "25%", align: "left" },
+      { Header: "thành viên", accessor: "member", width: "10%", align: "left" },
+      { Header: "giảng viên", accessor: "mentor", align: "center" },
+      { Header: "giá", accessor: "price", align: "center" },
+      { Header: "địa điểm", accessor: "location", align: "center" },
+      { Header: "thời gian", accessor: "date_time", align: "center" },
+      { Header: "trạng thái", accessor: "status", align: "center" },
     ],
 
     rows: dataTable(),
