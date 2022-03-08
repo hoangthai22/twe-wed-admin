@@ -54,7 +54,7 @@ export default function data() {
   const [user, setUser] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/members?pageIndex=1&pageSize=4")
+      .get("https://theweekendexpertise.azurewebsites.net/members?pageIndex=1&pageSize=5")
       .then((res) => {
         const users = res.data;
         // eslint-disable-next-line array-callback-return
