@@ -56,7 +56,8 @@ import Icon from "@mui/material/Icon";
 
 const routes = [
   {
-    name: "Navigator",
+    type: "title",
+    title: "Navigator",
   },
   {
     type: "collapse",
@@ -99,7 +100,8 @@ const routes = [
     component: <Coffee />,
   },
   {
-    divider: true,
+    type: "title",
+    title: "component",
   },
   {
     type: "collapse",
@@ -108,9 +110,6 @@ const routes = [
     icon: <Icon fontSize="small">highlight</Icon>,
     route: "/skill",
     component: <Skill />,
-  },
-  {
-    title: "Documentation",
   },
   {
     type: "collapse",

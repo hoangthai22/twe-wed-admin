@@ -13,7 +13,9 @@ import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
+import MDButton from "components/MDButton";
 import { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 
 export const Author = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
@@ -69,6 +71,12 @@ export default function data() {
       .catch((error) => console.log(error));
   }, []);
 
+  // handleEditUser = () => {
+  //   alert("Clike me");
+  // };
+  function handleEditUser() {
+    alert("Click me");
+  }
   function dataTable() {
     return mentor.map((item, index) => ({
       stt: (
@@ -115,7 +123,10 @@ export default function data() {
       ),
       action: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
+          {/* <Link to="/profile">
+            <MDButton>Edit</MDButton>
+          </Link> */}
+          <MDButton onClick={handleEditUser}>Edit</MDButton>
         </MDTypography>
       ),
     }));

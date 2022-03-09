@@ -118,19 +118,14 @@ export default function data() {
           />
         </MDBox>
       ),
-      action: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
-        </MDTypography>
-      ),
     }));
   }
 
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "session", accessor: "session", width: "25%", align: "left" },
-      { Header: "thành viên", accessor: "member", width: "10%", align: "left" },
+      { Header: "session", accessor: "session", width: "15%", align: "left" },
+      { Header: "thành viên", accessor: "member", width: "15%", align: "left" },
       { Header: "giảng viên", accessor: "mentor", align: "center" },
       { Header: "giá", accessor: "price", align: "center" },
       { Header: "địa điểm", accessor: "location", align: "center" },
