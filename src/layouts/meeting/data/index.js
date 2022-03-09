@@ -15,14 +15,14 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import { useEffect, useState } from "react";
 
-export const Author = ({ image, name, email }) => (
+export const Author = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
     <MDAvatar src={image} name={name} size="sm" />
     <MDBox ml={2} lineHeight={1}>
       <MDTypography display="block" variant="button" fontWeight="medium">
         {name}
       </MDTypography>
-      <MDTypography variant="caption">{email}</MDTypography>
+      {/* <MDTypography variant="caption">{email}</MDTypography> */}
     </MDBox>
   </MDBox>
 );
@@ -35,64 +35,69 @@ export const Job = ({ title, description }) => (
   </MDBox>
 );
 
-function getMajorString(majorList) {
-  let majors = "";
-  // eslint-disable-next-line array-callback-return
-  majorList.map((major) => {
-    // eslint-disable-next-line eqeqeq
-    if (majors != "") {
-      majors = `${majors}, ${major}`;
-    } else {
-      majors = major;
-    }
-  });
+// function getMajorString(majorList) {
+//   let majors = "";
+//   // eslint-disable-next-line array-callback-return
+//   majorList.map((major) => {
+//     // eslint-disable-next-line eqeqeq
+//     if (majors != "") {
+//       majors = `${majors}, ${major}`;
+//     } else {
+//       majors = major;
+//     }
+//   });
 
-  return majors;
-}
+//   return majors;
+// }
 
 export default function data() {
-  const [mentor, setMentor] = useState([]);
+  const [meeting, setMeeting] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/api/v1/mentors")
+      .get(
+        "https://theweekendexpertise.azurewebsites.net/api/v1/admin/sessions?pageIndex=1&pageSize=20"
+      )
       .then((res) => {
-        const mentors = res.data;
-        // eslint-disable-next-line array-callback-return
-        mentors.map((item) => {
-          // eslint-disable-next-line no-param-reassign
-          item.listMajor = getMajorString(item.listMajor);
-          const day = item.birthday.split(" ")[0];
-          // eslint-disable-next-line no-param-reassign
-          item.birthday = day;
-        });
-        setMentor(mentors);
+        console.log(res.data);
+        console.log(meeting);
+        setMeeting(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
   function dataTable() {
-    return mentor.map((item, index) => ({
+    return meeting.map((item, index) => ({
       stt: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {index + 1}
         </MDTypography>
       ),
-      author: <Author image={item.image} name={item.fullname} email="" />,
-      function: <Job title={item.listMajor} description="" />,
-
-      birthday: (
+      session: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.subjectName}
+        </MDTypography>
+      ),
+      member: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.birthday}
         </MDTypography>
       ),
-      address: (
+      mentor: <Author image={item.image} name={item.fullname} />,
+      price: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.address}
+          {item.price} VND
         </MDTypography>
       ),
-      sex: (
+      function: <Job title={item.listMajor} description="" />,
+
+      location: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.sex === "male" ? "Nam" : "Nữ"}
+          {item.street}, {item.distric}
+        </MDTypography>
+      ),
+      date_time: (
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+          {item.date}
         </MDTypography>
       ),
       status: (
@@ -105,20 +110,15 @@ export default function data() {
           />
         </MDBox>
       ),
-      action: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
-        </MDTypography>
-      ),
     }));
   }
 
   return {
     columns: [
-      { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "session", accessor: "session", width: "25%", align: "left" },
-      { Header: "thành viên", accessor: "member", width: "10%", align: "left" },
-      { Header: "giảng viên", accessor: "mentor", align: "center" },
+      { Header: "STT", accessor: "stt", width: "5%", align: "left" },
+      { Header: "session", accessor: "session", width: "10%", align: "left" },
+      { Header: "thành viên", accessor: "member", width: "15%", align: "left" },
+      { Header: "giảng viên", accessor: "mentor", width: "15%", align: "left" },
       { Header: "giá", accessor: "price", align: "center" },
       { Header: "địa điểm", accessor: "location", align: "center" },
       { Header: "thời gian", accessor: "date_time", align: "center" },
