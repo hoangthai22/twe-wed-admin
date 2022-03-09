@@ -9,6 +9,7 @@
 // import logoJira from "assets/images/small-logos/logo-jira.svg";
 // import logoInvesion from "assets/images/small-logos/logo-invision.svg";
 import axios from "axios";
+import Tooltip from "@mui/material/Tooltip";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
@@ -34,7 +35,29 @@ export const Job = ({ title }) => (
     {/* <MDTypography variant="caption">{description}</MDTypography> */}
   </MDBox>
 );
+export const avatars = (members) =>
+  members.map(([image]) => (
+    <Tooltip placeholder="bottom">
+      <MDAvatar
+        src={image}
+        size="xs"
+        sx={{
+          border: ({ borders: { borderWidth }, palette: { white } }) =>
+            `${borderWidth[2]} solid ${white.main}`,
+          cursor: "pointer",
+          position: "relative",
 
+          "&:not(:first-of-type)": {
+            ml: -1.25,
+          },
+
+          "&:hover, &:focus": {
+            zIndex: "10",
+          },
+        }}
+      />
+    </Tooltip>
+  ));
 // function getMajorString(majorList) {
 //   let majors = "";
 //   // eslint-disable-next-line array-callback-return
@@ -54,18 +77,8 @@ export default function data() {
   const [bookingToday, setBookingToday] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/api/v1/subjects?pageIndex=1&pageSize=20")
+      .get("https://theweekendexpertise.azurewebsites.net/status?pageIndex=1&pageSize=5")
       .then((res) => {
-        // const mentors = res.data;
-        // // eslint-disable-next-line array-callback-return
-        // mentors.map((item) => {
-        //   // eslint-disable-next-line no-param-reassign
-        //   item.listMajor = getMajorString(item.listMajor);
-        //   const day = item.birthday.split(" ")[0];
-        //   // eslint-disable-next-line no-param-reassign
-        //   item.birthday = day;
-        // });
-        // setMentor(mentors);
         console.log(res.data);
         console.log(bookingToday);
         setBookingToday(res.data);
@@ -82,36 +95,36 @@ export default function data() {
       ),
       session: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.name}
+          {item.subjectName}
         </MDTypography>
       ),
       member: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.birthday}
-        </MDTypography>
+        <MDBox display="flex" py={1}>
+          {avatars([item.listMemberImage])}
+        </MDBox>
       ),
-      mentor: <Author image={item.image} name={item.fullname} />,
+      mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       price: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.birthday}
+          {item.price}
         </MDTypography>
       ),
       function: <Job title={item.listMajor} description="" />,
 
       location: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.address}
+          {item.cafeStreet}, {item.cafeDistric}
         </MDTypography>
       ),
       date_time: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.address}
+          {item.date}, slot: {item.slot}
         </MDTypography>
       ),
       status: (
         <MDBox ml={-1}>
           <MDBadge
-            badgeContent={item.status ? "Active" : "InActive"}
+            badgeContent={item.status ? "3" : "2"}
             color="success"
             variant="gradient"
             size="sm"

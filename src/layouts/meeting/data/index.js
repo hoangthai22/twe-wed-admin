@@ -10,6 +10,7 @@
 // import logoInvesion from "assets/images/small-logos/logo-invision.svg";
 import axios from "axios";
 import MDAvatar from "components/MDAvatar";
+import Tooltip from "@mui/material/Tooltip";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
@@ -35,6 +36,30 @@ export const Job = ({ title, description }) => (
   </MDBox>
 );
 
+export const avatars = (members) =>
+  members.map(([image, name]) => (
+    <Tooltip key={name} title={name} placeholder="bottom">
+      <MDAvatar
+        src={image}
+        alt="name"
+        size="xs"
+        sx={{
+          border: ({ borders: { borderWidth }, palette: { white } }) =>
+            `${borderWidth[2]} solid ${white.main}`,
+          cursor: "pointer",
+          position: "relative",
+
+          "&:not(:first-of-type)": {
+            ml: -1.25,
+          },
+
+          "&:hover, &:focus": {
+            zIndex: "10",
+          },
+        }}
+      />
+    </Tooltip>
+  ));
 // function getMajorString(majorList) {
 //   let majors = "";
 //   // eslint-disable-next-line array-callback-return
@@ -55,7 +80,7 @@ export default function data() {
   useEffect(() => {
     axios
       .get(
-        "https://theweekendexpertise.azurewebsites.net/api/v1/admin/sessions?pageIndex=1&pageSize=20"
+        "https://theweekendexpertise.azurewebsites.net/api/v1/admin/sessions?pageIndex=1&pageSize=5"
       )
       .then((res) => {
         console.log(res.data);
@@ -78,11 +103,11 @@ export default function data() {
         </MDTypography>
       ),
       member: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.birthday}
-        </MDTypography>
+        <MDBox display="flex" py={1}>
+          {avatars([item.listMemberImage])}
+        </MDBox>
       ),
-      mentor: <Author image={item.image} name={item.fullname} />,
+      mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       price: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.price} VND
@@ -92,7 +117,7 @@ export default function data() {
 
       location: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.street}, {item.distric}
+          {item.cafeStreet}, {item.cafeDistric}
         </MDTypography>
       ),
       date_time: (
@@ -103,7 +128,7 @@ export default function data() {
       status: (
         <MDBox ml={-1}>
           <MDBadge
-            badgeContent={item.status ? "Active" : "InActive"}
+            badgeContent={item.status ? "1" : "2"}
             color="success"
             variant="gradient"
             size="sm"

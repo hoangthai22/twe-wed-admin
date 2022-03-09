@@ -11,20 +11,20 @@ import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import MDAvatar from "components/MDAvatar";
 // import MDBadge from "components/MDBadge";
-function getMajorString(majorList) {
-  let majors = "";
-  // eslint-disable-next-line array-callback-return
-  majorList.map((major) => {
-    // eslint-disable-next-line eqeqeq
-    if (majors != "") {
-      majors = `${majors}, ${major}`;
-    } else {
-      majors = major;
-    }
-  });
+// function getMajorString(majorList) {
+//   let majors = "";
+//   // eslint-disable-next-line array-callback-return
+//   majorList.map((major) => {
+//     // eslint-disable-next-line eqeqeq
+//     if (majors != "") {
+//       majors = `${majors}, ${major}`;
+//     } else {
+//       majors = major;
+//     }
+//   });
 
-  return majors;
-}
+//   return majors;
+// }
 export const Author = ({ image, name, email }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
     <MDAvatar src={image} name={name} size="sm" />
@@ -37,21 +37,16 @@ export const Author = ({ image, name, email }) => (
   </MDBox>
 );
 export default function data() {
-  const [mentor, setMentor] = useState([]);
+  const [topMentor, setMentor] = useState([]);
   useEffect(() => {
     axios
-      .get("https://theweekendexpertise.azurewebsites.net/api/v1/mentors")
+      .get(
+        "https://theweekendexpertise.azurewebsites.net/api/v1/admin/sessions/top_rate?pageIndex=1&pageSize=6"
+      )
       .then((res) => {
-        const mentors = res.data;
-        // eslint-disable-next-line array-callback-return
-        mentors.map((item) => {
-          // eslint-disable-next-line no-param-reassign
-          item.listMajor = getMajorString(item.listMajor);
-          const day = item.birthday.split(" ")[0];
-          // eslint-disable-next-line no-param-reassign
-          item.birthday = day;
-        });
-        setMentor(mentors);
+        console.log(res.data);
+        console.log(topMentor);
+        setMentor(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -67,26 +62,26 @@ export default function data() {
   //   </MDBox>
   // );
   function dataTable() {
-    return mentor.map((item, index) => ({
+    return topMentor.map((item, index) => ({
       stt: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {index + 1}
         </MDTypography>
       ),
       mentor: <Author image={item.image} name={item.fullname} />,
-      feedback: (
+      slogan: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Very good
+          {item.slogan}
         </MDTypography>
       ),
-      rating: <Rating name="read-only" value={5} readOnly />,
+      rating: <Rating name="read-only" value={item.rate} readOnly />,
     }));
   }
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "mentor", accessor: "mentor", align: "center" },
-      { Header: "feedback", accessor: "feedback", align: "center" },
+      { Header: "mentor", accessor: "mentor", width: "25%", align: "left" },
+      { Header: "slogan", accessor: "slogan", width: "25%", align: "left" },
       { Header: "rating", accessor: "rating", align: "center" },
     ],
 

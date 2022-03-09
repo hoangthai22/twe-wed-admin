@@ -29,7 +29,7 @@ import ComplexStatisticsCard from "examples/Cards/StatisticsCards/ComplexStatist
 
 // Dashboard components
 import BookingToday from "layouts/dashboard/components/BookingToday";
-import BookingWeek from "layouts/dashboard/components/BookingWeek";
+// import BookingWeek from "layouts/dashboard/components/BookingWeek";
 import TopMentor from "layouts/dashboard/components/TopMentor";
 
 function Dashboard() {
@@ -104,11 +104,6 @@ function Dashboard() {
             <Grid item xs={12} md={6} lg={50}>
               <BookingToday />
             </Grid>
-          </Grid>
-        </MDBox>
-        <MDBox mt={4.5}>
-          <Grid item xs={12} md={6} lg={100}>
-            <BookingWeek />
           </Grid>
         </MDBox>
         <MDBox mt={4.5}>
