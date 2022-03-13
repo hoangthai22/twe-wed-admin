@@ -13,7 +13,8 @@ import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
-import MDButton from "components/MDButton";
+import Icon from "@mui/material/Icon";
+// import MDButton from "components/MDButton";
 import { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 
@@ -24,7 +25,6 @@ export const Author = ({ image, name }) => (
       <MDTypography display="block" variant="button" fontWeight="medium">
         {name}
       </MDTypography>
-      {/* <MDTypography variant="caption">{email}</MDTypography> */}
     </MDBox>
   </MDBox>
 );
@@ -71,9 +71,6 @@ export default function data() {
       .catch((error) => console.log(error));
   }, []);
 
-  // handleEditUser = () => {
-  //   alert("Clike me");
-  // };
   function handleEditUser() {
     alert("Click me");
   }
@@ -126,7 +123,13 @@ export default function data() {
           {/* <Link to="/profile">
             <MDButton>Edit</MDButton>
           </Link> */}
-          <MDButton onClick={handleEditUser}>Edit</MDButton>
+          <Icon
+            sx={{ cursor: "pointer", fontWeight: "bold" }}
+            fontSize="small"
+            onClick={handleEditUser}
+          >
+            edit
+          </Icon>
         </MDTypography>
       ),
     }));

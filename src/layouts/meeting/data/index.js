@@ -36,30 +36,39 @@ export const Job = ({ title, description }) => (
   </MDBox>
 );
 
-export const avatars = (members) =>
-  members.map(([image, name]) => (
-    <Tooltip key={name} title={name} placeholder="bottom">
-      <MDAvatar
-        src={image}
-        alt="name"
-        size="xs"
-        sx={{
-          border: ({ borders: { borderWidth }, palette: { white } }) =>
-            `${borderWidth[2]} solid ${white.main}`,
-          cursor: "pointer",
-          position: "relative",
+// function getMember(memberImage) {
+//   let images = "";
+//   memberImage.map((image) => {
+//     if (images !== "") {
+//       images = `${images} ${image}`;
+//     } else {
+//       images = image;
+//     }
+//   });
+//   return images;
+// }
+export const Avatars = ({ image }) => (
+  <Tooltip placeholder="bottom">
+    <MDAvatar
+      src={image}
+      size="xs"
+      sx={{
+        border: ({ borders: { borderWidth }, palette: { white } }) =>
+          `${borderWidth[2]} solid ${white.main}`,
+        cursor: "pointer",
+        position: "relative",
 
-          "&:not(:first-of-type)": {
-            ml: -1.25,
-          },
+        "&:not(:first-of-type)": {
+          ml: -1.25,
+        },
 
-          "&:hover, &:focus": {
-            zIndex: "10",
-          },
-        }}
-      />
-    </Tooltip>
-  ));
+        "&:hover, &:focus": {
+          zIndex: "10",
+        },
+      }}
+    />
+  </Tooltip>
+);
 // function getMajorString(majorList) {
 //   let majors = "";
 //   // eslint-disable-next-line array-callback-return
@@ -85,7 +94,11 @@ export default function data() {
       .then((res) => {
         console.log(res.data);
         console.log(meeting);
-        setMeeting(res.data);
+        // const meetings = res.data;
+        // meetings.map((abc) => {
+        //   abc.listMemberImage = getMember(abc.listMemberImage);
+        // });
+        setMeeting(meeting);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -103,8 +116,8 @@ export default function data() {
         </MDTypography>
       ),
       member: (
-        <MDBox display="flex" py={1}>
-          {avatars([item.listMemberImage])}
+        <MDBox display="flex" py={2}>
+          <Avatars image={item.listMemberImage} />
         </MDBox>
       ),
       mentor: <Author image={item.mentorImage} name={item.mentorName} />,

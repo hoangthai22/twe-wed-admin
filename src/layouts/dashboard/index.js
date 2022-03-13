@@ -67,7 +67,6 @@ function Dashboard() {
               />
             </MDBox>
           </Grid>
-
           <Grid item xs={12} md={6} lg={3}>
             <MDBox mb={1.5}>
               <ComplexStatisticsCard

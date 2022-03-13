@@ -25,14 +25,13 @@ import MDAvatar from "components/MDAvatar";
 
 //   return majors;
 // }
-export const Author = ({ image, name, email }) => (
+export const Author = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
     <MDAvatar src={image} name={name} size="sm" />
     <MDBox ml={2} lineHeight={1}>
       <MDTypography display="block" variant="button" fontWeight="medium">
         {name}
       </MDTypography>
-      <MDTypography variant="caption">{email}</MDTypography>
     </MDBox>
   </MDBox>
 );
