@@ -16,12 +16,11 @@ Coded by www.creative-tim.com
 // @mui material components
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
+import Select from "assets/theme/components/form/select";
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import Footer from "examples/Footer";
-import Select from "react-select";
-import "bootstrap/dist/css/bootstrap.min.css";
 // import MDInput from "components/MDInput";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
