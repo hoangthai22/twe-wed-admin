@@ -16,6 +16,8 @@ import MDTypography from "components/MDTypography";
 import Icon from "@mui/material/Icon";
 // import MDButton from "components/MDButton";
 import { useEffect, useState } from "react";
+// import AddUser from "examples/EditUser/AddUser";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 // import { Link } from "react-router-dom";
 
 export const Author = ({ image, name }) => (
@@ -72,7 +74,53 @@ export default function data() {
   }, []);
 
   function handleEditUser() {
-    alert("Click me");
+    return (
+      function toggle() {
+        alert("click me");
+      },
+      (
+        <Modal
+          isOpen
+          toggle={() => {
+            this.toggle();
+          }}
+          // className={"abcClassName"}
+        >
+          <ModalHeader
+            toggle={() => {
+              this.toggle();
+            }}
+          >
+            Modal title
+          </ModalHeader>
+          <ModalBody>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+            mollit anim id est laborum.
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              color="primary"
+              onClick={() => {
+                this.toggle();
+              }}
+            >
+              Do Something
+            </Button>{" "}
+            <Button
+              onClick={() => {
+                this.toggle();
+              }}
+            >
+              Cancel
+            </Button>
+          </ModalFooter>
+        </Modal>
+      )
+    );
   }
   function dataTable() {
     return mentor.map((item, index) => ({
@@ -128,7 +176,7 @@ export default function data() {
             fontSize="small"
             onClick={handleEditUser}
           >
-            edit
+            Edit
           </Icon>
         </MDTypography>
       ),

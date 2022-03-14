@@ -30,15 +30,52 @@ import DataTable from "examples/Tables/DataTable";
 // import { navbarRow } from "examples/Navbars/DashboardNavbar/styles";
 // Data
 import authorsTableData from "layouts/mentor/data/authorsTableData";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Tables() {
   const { columns, rows } = authorsTableData();
-  const techCompanies = [
-    { label: "BigData", value: 1 },
-    { label: "Bussiness", value: 2 },
-    { label: "Commerce", value: 3 },
-    { label: "IT", value: 4 },
-  ];
+  const [major, setMajor] = useState([]);
+
+  // const techCompanies = [
+  //   { label: "BigData", value: 1 },
+  //   { label: "Bussiness", value: 2 },
+  //   { label: "Commerce", value: 3 },
+  //   { label: "IT", value: 4 },
+  // ];
+  useEffect(() => {
+    let newList = [];
+    axios
+      .get("https://theweekendexpertise.azurewebsites.net/api/v1/majors")
+      .then((res) => {
+        const majors = res.data;
+        return majors;
+      })
+      .then((result) => {
+        // eslint-disable-next-line array-callback-return
+        result.map((item) => {
+          const value = { label: item.name, value: item.id };
+          newList = [...newList, value];
+        });
+        setMajor(newList);
+        const data = rows;
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  function handleSelect(e) {
+    axios
+      .get(
+        `https://theweekendexpertise.azurewebsites.net/api/v1/mentors/filter?major=${e.label}&pageIndex=1&pageSize=10`
+      )
+      .then((res) => {
+        const mentors = res.data;
+        console.log(mentors);
+      })
+
+      .catch((error) => console.log(error));
+  }
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -64,7 +101,11 @@ function Tables() {
                     <div className="container">
                       <div className="row">
                         <div className="col-md-4">
-                          <Select options={techCompanies} title="Filter..." />
+                          <Select
+                            options={major}
+                            title="Filter..."
+                            onChange={(e) => handleSelect(e)}
+                          />
                         </div>
                       </div>
                     </div>
