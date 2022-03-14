@@ -37,7 +37,6 @@ Coded by www.creative-tim.com
 
 // Material Dashboard 2 React layouts
 import Dashboard from "layouts/dashboard";
-
 import Meeting from "layouts/meeting";
 import Mentor from "layouts/mentor";
 import User from "layouts/user";
@@ -49,11 +48,17 @@ import Major from "layouts/major";
 import Profile from "layouts/profile";
 import SignIn from "layouts/authentication/sign-in";
 // import SignUp from "layouts/authentication/sign-up";
-
 // @mui icons
 import Icon from "@mui/material/Icon";
+// function Route() {
+//   return <Breadcrumbs title="Navigator" />;
+// }
 
 const routes = [
+  {
+    type: "title",
+    title: "Navigator",
+  },
   {
     type: "collapse",
     name: "Dashboard",
@@ -88,19 +93,23 @@ const routes = [
   },
   {
     type: "collapse",
+    name: "Location",
+    key: "coffee",
+    icon: <Icon fontSize="small">store</Icon>,
+    route: "/location",
+    component: <Coffee />,
+  },
+  {
+    type: "title",
+    title: "component",
+  },
+  {
+    type: "collapse",
     name: "Skill",
     key: "skill",
     icon: <Icon fontSize="small">highlight</Icon>,
     route: "/skill",
     component: <Skill />,
-  },
-  {
-    type: "collapse",
-    name: "Coffee",
-    key: "coffee",
-    icon: <Icon fontSize="small">store</Icon>,
-    route: "/coffee",
-    component: <Coffee />,
   },
   {
     type: "collapse",

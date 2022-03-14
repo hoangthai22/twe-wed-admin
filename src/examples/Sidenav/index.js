@@ -109,8 +109,9 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
           variant="caption"
           fontWeight="bold"
           textTransform="uppercase"
-          pl={3}
-          mt={2}
+          font-size="15px"
+          pl={2}
+          mt={1}
           mb={1}
           ml={1}
         >

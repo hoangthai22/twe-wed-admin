@@ -90,7 +90,7 @@ export default function data() {
   return {
     columns: [
       { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "Tên coffee", accessor: "name", width: "20%", align: "left" },
+      { Header: "Location", accessor: "name", width: "20%", align: "left" },
       { Header: "Địa chỉ", accessor: "address", width: "20%", align: "left" },
       { Header: "Thời gian hoạt động", accessor: "time", width: "15%", align: "left" },
       { Header: "Mô tả ", accessor: "description", align: "center" },

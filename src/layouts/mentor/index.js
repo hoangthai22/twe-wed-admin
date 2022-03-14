@@ -20,16 +20,25 @@ import Grid from "@mui/material/Grid";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 import Footer from "examples/Footer";
+import Select from "react-select";
+import "bootstrap/dist/css/bootstrap.min.css";
+// import MDInput from "components/MDInput";
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "examples/Navbars/DashboardNavbar";
 import DataTable from "examples/Tables/DataTable";
+// import { navbarRow } from "examples/Navbars/DashboardNavbar/styles";
 // Data
 import authorsTableData from "layouts/mentor/data/authorsTableData";
 
 function Tables() {
   const { columns, rows } = authorsTableData();
-
+  const techCompanies = [
+    { label: "BigData", value: 1 },
+    { label: "Bussiness", value: 2 },
+    { label: "Commerce", value: 3 },
+    { label: "IT", value: 4 },
+  ];
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -47,9 +56,21 @@ function Tables() {
                 borderRadius="lg"
                 coloredShadow="info"
               >
-                <MDTypography variant="h6" color="white">
-                  Danh sách mentor
-                </MDTypography>
+                <MDBox justifyContent="space-between" alignItems="center">
+                  <MDTypography variant="h6" color="white">
+                    Danh sách mentor
+                  </MDTypography>
+                  <MDBox>
+                    <div className="container">
+                      <div className="row">
+                        <div className="col-md-4">
+                          <Select options={techCompanies} title="Filter..." />
+                        </div>
+                      </div>
+                    </div>
+                  </MDBox>
+                  {/* <MDInput margin="50px" label="Search by name" /> */}
+                </MDBox>
               </MDBox>
               <MDBox pt={3}>
                 <DataTable
