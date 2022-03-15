@@ -98,7 +98,7 @@ export default function data() {
         // meetings.map((abc) => {
         //   abc.listMemberImage = getMember(abc.listMemberImage);
         // });
-        setMeeting(meeting);
+        setMeeting(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -126,8 +126,6 @@ export default function data() {
           {item.price} VND
         </MDTypography>
       ),
-      function: <Job title={item.listMajor} description="" />,
-
       location: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
           {item.cafeStreet}, {item.cafeDistric}
@@ -135,7 +133,7 @@ export default function data() {
       ),
       date_time: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.date}
+          {item.date}, {item.slot}
         </MDTypography>
       ),
       status: (
