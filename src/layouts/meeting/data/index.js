@@ -123,6 +123,7 @@ export default function data() {
         // meetings.map((abc) => {
         //   abc.listMemberImage = getMember(abc.listMemberImage);
         // });
+        // setMeeting(meetings)
         setMeeting(res.data);
       })
       .catch((error) => console.log(error));
