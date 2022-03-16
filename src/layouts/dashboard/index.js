@@ -44,11 +44,11 @@ function Dashboard() {
                 color="dark"
                 icon="weekend"
                 title="Bookings"
-                count=""
+                count={281}
                 percentage={{
-                  color: "",
-                  amount: "",
-                  label: "",
+                  color: "success",
+                  amount: "+55%",
+                  label: "than last week",
                 }}
               />
             </MDBox>
@@ -58,11 +58,11 @@ function Dashboard() {
               <ComplexStatisticsCard
                 icon="leaderboard"
                 title="Today's Users"
-                count=""
+                count="1000"
                 percentage={{
-                  color: "",
-                  amount: "",
-                  label: "",
+                  color: "success",
+                  amount: "+3%",
+                  label: "than last month",
                 }}
               />
             </MDBox>
@@ -71,13 +71,13 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 color="success"
-                icon="store"
+                icon="local_library"
                 title="Mentors"
-                count=""
+                count="+5"
                 percentage={{
-                  color: "",
-                  amount: "",
-                  label: "",
+                  color: "success",
+                  amount: "+1",
+                  label: "Just updated",
                 }}
               />
             </MDBox>
@@ -88,11 +88,11 @@ function Dashboard() {
                 color="primary"
                 icon="person_add"
                 title="Users"
-                count=""
+                count="+500"
                 percentage={{
-                  color: "",
-                  amount: "",
-                  label: "",
+                  color: "success",
+                  amount: "+50%",
+                  label: "Just updated",
                 }}
               />
             </MDBox>

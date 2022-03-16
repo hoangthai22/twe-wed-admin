@@ -13,6 +13,7 @@ import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
+import Icon from "@mui/material/Icon";
 import { useEffect, useState } from "react";
 
 export const User = ({ image, name }) => (
@@ -122,7 +123,13 @@ export default function data() {
       ),
       action: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
+          <Icon
+            sx={{ cursor: "pointer", fontWeight: "bold" }}
+            fontSize="small"
+            // onClick={handleEditUser}
+          >
+            edit
+          </Icon>
         </MDTypography>
       ),
     }));

@@ -176,7 +176,7 @@ export default function data() {
             fontSize="small"
             onClick={handleEditUser}
           >
-            Edit
+            edit
           </Icon>
         </MDTypography>
       ),

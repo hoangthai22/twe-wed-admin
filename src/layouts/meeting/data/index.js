@@ -123,7 +123,7 @@ export default function data() {
       mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       price: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.price} VND
+          {item.price}.000 VND
         </MDTypography>
       ),
       location: (
@@ -139,7 +139,7 @@ export default function data() {
       status: (
         <MDBox ml={-1}>
           <MDBadge
-            badgeContent={item.status ? "1" : "2"}
+            badgeContent={item.status ? "Confirm" : "2"}
             color="success"
             variant="gradient"
             size="sm"
@@ -152,9 +152,8 @@ export default function data() {
   return {
     columns: [
       { Header: "STT", accessor: "stt", width: "5%", align: "left" },
-      { Header: "session", accessor: "session", width: "10%", align: "left" },
-      { Header: "thành viên", accessor: "member", width: "15%", align: "left" },
       { Header: "giảng viên", accessor: "mentor", width: "15%", align: "left" },
+      { Header: "thành viên", accessor: "member", width: "15%", align: "left" },
       { Header: "giá", accessor: "price", align: "center" },
       { Header: "địa điểm", accessor: "location", align: "center" },
       { Header: "thời gian", accessor: "date_time", align: "center" },
