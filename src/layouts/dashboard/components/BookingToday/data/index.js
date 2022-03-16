@@ -73,8 +73,35 @@ export const avatars = (members) =>
 //   return majors;
 // }
 
+function getSlot(slot) {
+  const SLOT = [
+    "07:00 - 08:30",
+    "08:45 - 10:15",
+    "10:30 - 12:00",
+    "12:30 - 14:00",
+    "14:15 - 15:45",
+    "16:00 - 17:30",
+  ];
+  switch (slot) {
+    case 1:
+      return SLOT[1];
+    case 2:
+      return SLOT[2];
+    case 3:
+      return SLOT[3];
+    case 4:
+      return SLOT[4];
+    case 5:
+      return SLOT[5];
+    case 6:
+      return SLOT[6];
+    default:
+  }
+  return getSlot;
+}
 export default function data() {
   const [bookingToday, setBookingToday] = useState([]);
+
   useEffect(() => {
     axios
       .get("https://theweekendexpertise.azurewebsites.net/status?pageIndex=1&pageSize=5")
@@ -89,12 +116,12 @@ export default function data() {
   function dataTable() {
     return bookingToday.map((item, index) => ({
       stt: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="bold">
           {index + 1}
         </MDTypography>
       ),
       session: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="bold">
           {item.subjectName}
         </MDTypography>
       ),
@@ -105,20 +132,20 @@ export default function data() {
       ),
       mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       price: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="bold">
           {item.price}.000 VND
         </MDTypography>
       ),
       function: <Job title={item.listMajor} description="" />,
 
       location: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.cafeStreet}, {item.cafeDistric}
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="bold">
+          {item.cafeName}
         </MDTypography>
       ),
       date_time: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.date}, slot: {item.slot}
+        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="bold">
+          {item.date}, {getSlot(item.slot)}
         </MDTypography>
       ),
       status: (
@@ -136,9 +163,9 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "STT", accessor: "stt", align: "left" },
-      { Header: "giảng viên", accessor: "mentor", align: "center" },
-      { Header: "thành viên", accessor: "member", width: "15%", align: "left" },
+      { Header: "STT", accessor: "stt", width: "5%", align: "left" },
+      { Header: "giảng viên", accessor: "mentor", align: "left" },
+      { Header: "thành viên", accessor: "member", width: "25%", align: "left" },
       { Header: "giá", accessor: "price", align: "center" },
       { Header: "địa điểm", accessor: "location", align: "center" },
       { Header: "thời gian", accessor: "date_time", align: "center" },

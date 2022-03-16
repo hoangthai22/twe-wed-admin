@@ -137,7 +137,7 @@ export default function data() {
 
   return {
     columns: [
-      { Header: "STT", accessor: "stt", align: "left" },
+      { Header: "STT", accessor: "stt", width: "5%", align: "left" },
       { Header: "Người dùng", accessor: "user", width: "20%", align: "left" },
       { Header: "Chuyên ngành", accessor: "function", align: "left" },
       { Header: "Ngày sinh", accessor: "birthday", align: "center" },

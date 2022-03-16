@@ -83,7 +83,32 @@ export const Avatars = ({ image }) => (
 
 //   return majors;
 // }
-
+function getSlot(slot) {
+  const SLOT = [
+    "07:00 - 08:30",
+    "08:45 - 10:15",
+    "10:30 - 12:00",
+    "12:30 - 14:00",
+    "14:15 - 15:45",
+    "16:00 - 17:30",
+  ];
+  switch (slot) {
+    case 1:
+      return SLOT[1];
+    case 2:
+      return SLOT[2];
+    case 3:
+      return SLOT[3];
+    case 4:
+      return SLOT[4];
+    case 5:
+      return SLOT[5];
+    case 6:
+      return SLOT[6];
+    default:
+  }
+  return getSlot;
+}
 export default function data() {
   const [meeting, setMeeting] = useState([]);
   useEffect(() => {
@@ -128,12 +153,12 @@ export default function data() {
       ),
       location: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.cafeStreet}, {item.cafeDistric}
+          {item.cafeName}
         </MDTypography>
       ),
       date_time: (
         <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.date}, {item.slot}
+          {item.date}, {getSlot(item.slot)}
         </MDTypography>
       ),
       status: (
@@ -153,7 +178,7 @@ export default function data() {
     columns: [
       { Header: "STT", accessor: "stt", width: "5%", align: "left" },
       { Header: "giảng viên", accessor: "mentor", width: "15%", align: "left" },
-      { Header: "thành viên", accessor: "member", width: "15%", align: "left" },
+      { Header: "thành viên", accessor: "member", width: "25%", align: "left" },
       { Header: "giá", accessor: "price", align: "center" },
       { Header: "địa điểm", accessor: "location", align: "center" },
       { Header: "thời gian", accessor: "date_time", align: "center" },
