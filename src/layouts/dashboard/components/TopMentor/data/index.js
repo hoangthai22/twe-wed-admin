@@ -27,9 +27,9 @@ import MDAvatar from "components/MDAvatar";
 // }
 export const Author = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
-    <MDAvatar src={image} name={name} size="sm" />
-    <MDBox ml={2} lineHeight={1}>
-      <MDTypography display="block" variant="button" fontWeight="medium">
+    <MDAvatar src={image} name={name} size="lg" />
+    <MDBox ml={1} lineHeight={1}>
+      <MDTypography display="block" variant="button" fontWeight="medium" fontSize="15px">
         {name}
       </MDTypography>
     </MDBox>
@@ -63,17 +63,31 @@ export default function data() {
   function dataTable() {
     return topMentor.map((item, index) => ({
       stt: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {index + 1}
         </MDTypography>
       ),
       mentor: <Author image={item.image} name={item.fullname} />,
       slogan: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {item.slogan}
         </MDTypography>
       ),
-      rating: <Rating name="read-only" value={item.rate} readOnly />,
+      rating: <Rating name="read-only" value={item.rate} readOnly fontSize="15px" />,
     }));
   }
   return {

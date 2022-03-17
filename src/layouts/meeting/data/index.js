@@ -18,48 +18,27 @@ import { useEffect, useState } from "react";
 
 export const Author = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
-    <MDAvatar src={image} name={name} size="sm" />
-    <MDBox ml={2} lineHeight={1}>
-      <MDTypography display="block" variant="button" fontWeight="medium">
+    <MDAvatar src={image} name={name} size="lg" />
+    <MDBox ml={1} lineHeight={1}>
+      <MDTypography display="block" variant="button" fontWeight="medium" fontSize="15px">
         {name}
       </MDTypography>
-      {/* <MDTypography variant="caption">{email}</MDTypography> */}
     </MDBox>
   </MDBox>
 );
-export const Job = ({ title, description }) => (
-  <MDBox lineHeight={1} textAlign="left">
-    <MDTypography display="block" variant="caption" color="text" fontWeight="medium">
-      {title}
-    </MDTypography>
-    <MDTypography variant="caption">{description}</MDTypography>
-  </MDBox>
-);
-
-// function getMember(memberImage) {
-//   let images = "";
-//   memberImage.map((image) => {
-//     if (images !== "") {
-//       images = `${images} ${image}`;
-//     } else {
-//       images = image;
-//     }
-//   });
-//   return images;
-// }
 export const Avatars = ({ image }) => (
   <Tooltip placeholder="bottom">
     <MDAvatar
       src={image}
-      size="xs"
+      size="sm"
       sx={{
         border: ({ borders: { borderWidth }, palette: { white } }) =>
-          `${borderWidth[2]} solid ${white.main}`,
+          `${borderWidth[1]} solid ${white.main}`,
         cursor: "pointer",
         position: "relative",
 
         "&:not(:first-of-type)": {
-          ml: -1.25,
+          ml: -1,
         },
 
         "&:hover, &:focus": {
@@ -69,20 +48,6 @@ export const Avatars = ({ image }) => (
     />
   </Tooltip>
 );
-// function getMajorString(majorList) {
-//   let majors = "";
-//   // eslint-disable-next-line array-callback-return
-//   majorList.map((major) => {
-//     // eslint-disable-next-line eqeqeq
-//     if (majors != "") {
-//       majors = `${majors}, ${major}`;
-//     } else {
-//       majors = major;
-//     }
-//   });
-
-//   return majors;
-// }
 function getSlot(slot) {
   const SLOT = [
     "07:00 - 08:30",
@@ -119,11 +84,6 @@ export default function data() {
       .then((res) => {
         console.log(res.data);
         console.log(meeting);
-        // const meetings = res.data;
-        // meetings.map((abc) => {
-        //   abc.listMemberImage = getMember(abc.listMemberImage);
-        // });
-        // setMeeting(meetings)
         setMeeting(res.data);
       })
       .catch((error) => console.log(error));
@@ -132,33 +92,58 @@ export default function data() {
   function dataTable() {
     return meeting.map((item, index) => ({
       stt: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="bold"
+          fontSize="15px"
+        >
           {index + 1}
-        </MDTypography>
-      ),
-      session: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {item.subjectName}
         </MDTypography>
       ),
       member: (
         <MDBox display="flex" py={2}>
-          <Avatars image={item.listMemberImage} />
+          {item.listMemberImage.map((image) => (
+            <Avatars image={image} />
+          ))}
         </MDBox>
       ),
       mentor: <Author image={item.mentorImage} name={item.mentorName} />,
       price: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="bold"
+          fontSize="15px"
+        >
           {item.price}.000 VND
         </MDTypography>
       ),
       location: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="bold"
+          fontSize="15px"
+        >
           {item.cafeName}
         </MDTypography>
       ),
       date_time: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="bold"
+          fontSize="15px"
+        >
           {item.date}, {getSlot(item.slot)}
         </MDTypography>
       ),
