@@ -22,9 +22,9 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 
 export const Author = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
-    <MDAvatar src={image} name={name} size="sm" />
-    <MDBox ml={2} lineHeight={1}>
-      <MDTypography display="block" variant="button" fontWeight="medium">
+    <MDAvatar src={image} name={name} size="lg" />
+    <MDBox ml={1} lineHeight={1}>
+      <MDTypography display="block" variant="button" fontWeight="medium" fontSize="13.5px">
         {name}
       </MDTypography>
     </MDBox>
@@ -32,7 +32,13 @@ export const Author = ({ image, name }) => (
 );
 export const Job = ({ title }) => (
   <MDBox lineHeight={1} textAlign="left">
-    <MDTypography display="block" variant="caption" color="text" fontWeight="medium">
+    <MDTypography
+      display="block"
+      variant="caption"
+      color="text"
+      fontWeight="medium"
+      fontSize="13.5px"
+    >
       {title}
     </MDTypography>
   </MDBox>
@@ -125,34 +131,76 @@ export default function data() {
   function dataTable() {
     return mentor.map((item, index) => ({
       stt: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="13.5px"
+        >
           {index + 1}
         </MDTypography>
       ),
       author: <Author image={item.image} name={item.fullname} />,
       function: <Job title={item.listMajor} description="" />,
       slogan: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="13.5px"
+        >
           {item.slogan}
         </MDTypography>
       ),
       email: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="13.5px"
+        >
           {item.email}
         </MDTypography>
       ),
       birthday: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="13.5px"
+        >
           {item.birthday}
         </MDTypography>
       ),
       address: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="13.5px"
+        >
           {item.address}
         </MDTypography>
       ),
       sex: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="13.5px"
+        >
           {item.sex === "male" ? "Nam" : "Nữ"}
         </MDTypography>
       ),
@@ -163,20 +211,25 @@ export default function data() {
             color="success"
             variant="gradient"
             size="sm"
+            fontSize="13.5px"
           />
         </MDBox>
       ),
       action: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          {/* <Link to="/profile">
-            <MDButton>Edit</MDButton>
-          </Link> */}
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="13.5px"
+        >
           <Icon
             sx={{ cursor: "pointer", fontWeight: "bold" }}
             fontSize="small"
             onClick={handleEditUser}
           >
-            Edit
+            edit
           </Icon>
         </MDTypography>
       ),

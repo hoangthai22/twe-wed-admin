@@ -12,32 +12,23 @@ import axios from "axios";
 import MDAvatar from "components/MDAvatar";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
+import Icon from "@mui/material/Icon";
 import MDTypography from "components/MDTypography";
 import { useEffect, useState } from "react";
 
-export const Coffee = ({ image, name, email }) => (
+export const Coffee = ({ image, name }) => (
   <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
     <MDAvatar src={image} name={name} size="lg" />
-    <MDBox ml={2} lineHeight={1}>
-      <MDTypography display="block" variant="button" fontWeight="medium">
+    <MDBox ml={1} lineHeight={1}>
+      <MDTypography display="block" variant="button" fontWeight="medium" fontSize="15px">
         {name}
       </MDTypography>
-      <MDTypography variant="caption">{email}</MDTypography>
     </MDBox>
-  </MDBox>
-);
-export const Job = ({ title, description }) => (
-  <MDBox lineHeight={1} textAlign="left">
-    <MDTypography display="block" variant="caption" color="text" fontWeight="medium">
-      {title}
-    </MDTypography>
-    <MDTypography variant="caption">{description}</MDTypography>
   </MDBox>
 );
 
 export default function data() {
   const [coffees, setCoffees] = useState([]);
-  // const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     axios
@@ -53,35 +44,78 @@ export default function data() {
   function dataTable() {
     return coffees.map((item, index) => ({
       stt: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {index + 1}
         </MDTypography>
       ),
       name: <Coffee image={item.image} name={item.name} email="" />,
 
       description: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {item.description}
         </MDTypography>
       ),
       address: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {item.street}, {item.distric}
         </MDTypography>
       ),
       time: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
           {item.openTime} - {item.closeTime}
         </MDTypography>
       ),
       status: (
         <MDBox ml={-1}>
-          <MDBadge badgeContent="Active" color="success" variant="gradient" size="sm" />
+          <MDBadge
+            badgeContent="Active"
+            color="success"
+            variant="gradient"
+            size="sm"
+            fontSize="15px"
+          />
         </MDBox>
       ),
       action: (
-        <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-          Edit
+        <MDTypography
+          component="a"
+          href="#"
+          variant="caption"
+          color="text"
+          fontWeight="medium"
+          fontSize="15px"
+        >
+          <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small">
+            edit
+          </Icon>
         </MDTypography>
       ),
     }));
