@@ -110,7 +110,7 @@ function Tables() {
                       </div>
                     </div>
                   </MDBox>
-                  {/* <MDInput margin="50px" label="Search by name" /> */}
+                  {/* /* <MDInput margin="50px" label="Search by name" /> */}
                 </MDBox>
               </MDBox>
               <MDBox pt={3}>

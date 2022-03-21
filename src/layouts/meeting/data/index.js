@@ -163,7 +163,7 @@ export default function data() {
   return {
     columns: [
       { Header: "STT", accessor: "stt", width: "5%", align: "left" },
-      { Header: "giảng viên", accessor: "mentor", width: "15%", align: "left" },
+      { Header: "mentor", accessor: "mentor", width: "15%", align: "left" },
       { Header: "thành viên", accessor: "member", width: "25%", align: "left" },
       { Header: "giá", accessor: "price", align: "center" },
       { Header: "địa điểm", accessor: "location", align: "center" },
