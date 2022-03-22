@@ -12,9 +12,20 @@ import axios from "axios";
 import MDBadge from "components/MDBadge";
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
+import MDAvatar from "components/MDAvatar";
 import Icon from "@mui/material/Icon";
 import { useEffect, useState } from "react";
 
+export const Skill = ({ image, name }) => (
+  <MDBox display="flex" alignItems="center" lineHeight={1} p={1}>
+    <MDAvatar src={image} name={name} size="lg" />
+    <MDBox ml={1} lineHeight={1}>
+      <MDTypography display="block" variant="button" fontWeight="medium" fontSize="13.5px">
+        {name}
+      </MDTypography>
+    </MDBox>
+  </MDBox>
+);
 export default function data() {
   const [skill, setSkill] = useState([]);
   useEffect(() => {
@@ -52,18 +63,7 @@ export default function data() {
           {item.id}
         </MDTypography>
       ),
-      name: (
-        <MDTypography
-          component="a"
-          href="#"
-          variant="caption"
-          color="text"
-          fontWeight="medium"
-          fontSize="13.5px"
-        >
-          {item.name}
-        </MDTypography>
-      ),
+      name: <Skill image={item.image} name={item.name} />,
       status: (
         <MDBox ml={-1}>
           <MDBadge

@@ -60,17 +60,17 @@ function getSlot(slot) {
   ];
   switch (slot) {
     case 1:
-      return SLOT[1];
+      return SLOT[0];
     case 2:
-      return SLOT[2];
+      return SLOT[1];
     case 3:
-      return SLOT[3];
+      return SLOT[2];
     case 4:
-      return SLOT[4];
+      return SLOT[3];
     case 5:
-      return SLOT[5];
+      return SLOT[4];
     case 6:
-      return SLOT[6];
+      return SLOT[5];
     default:
   }
   return getSlot;

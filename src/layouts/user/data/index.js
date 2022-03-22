@@ -35,15 +35,9 @@ export default function data() {
         "https://theweekendexpertise.azurewebsites.net/api/v1/admin/members?pageIndex=1&pageSize=5"
       )
       .then((res) => {
-        const users = res.data;
-        // eslint-disable-next-line array-callback-return
-        users.map((item) => {
-          // eslint-disable-next-line no-param-reassign
-          const day = item.birthday.split(" ")[0];
-          // eslint-disable-next-line no-param-reassign
-          item.birthday = day;
-        });
-        setUser(users);
+        console.log(res.data);
+        console.log(user);
+        setUser(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
